@@ -586,7 +586,7 @@
                                                                      <div class="col-2 col-sm-1 text-right">
                                                                         <button type="button"
                                                                            onclick="toggleTranslatePlay(this)"
-                                                                           play-info="000012"
+                                                                           play-info="00001<%= i %>"
                                                                            class="btn float-right btn-icon-only m-0 mb-1 btn-secondary"><i
                                                                               class="fas fa-volume-up"></i></button>
                                                                         <button type="button"
@@ -595,7 +595,7 @@
                                                                            class="btn float-right btn-icon-only btn-secondary"><i
                                                                               class="fas fa-plus"></i></button>
                                                                      </div>
-                                                                     <div id="play_wrapper_000012"
+                                                                     <div id="play_wrapper_00001<%= i %>"
                                                                         class="col-12 pt-1 d-none">
                                                                         <audio class="js-player" crossorigin
                                                                            playsinline>
@@ -793,7 +793,7 @@
                                                                                  <div class="col-2 col-sm-1 text-right">
                                                                                     <button type="button"
                                                                                        onclick="toggleTranslatePlay(this)"
-                                                                                       play-info="000013"
+                                                                                       play-info="0000<%= i %>3"
                                                                                        class="btn float-right btn-icon-only m-0 mb-1 btn-secondary"><i
                                                                                           class="fas fa-volume-up"></i></button>
                                                                                     <button type="button"
@@ -802,7 +802,7 @@
                                                                                        class="btn float-right btn-icon-only btn-secondary"><i
                                                                                           class="fas fa-plus"></i></button>
                                                                                  </div>
-                                                                                 <div id="play_wrapper_000013"
+                                                                                 <div id="play_wrapper_0000<%= i %>3"
                                                                                     class="col-12 pt-1 d-none">
                                                                                     <audio class="js-player" crossorigin
                                                                                        playsinline>
@@ -976,6 +976,7 @@
                                                                               <div class="exercise-view">
                                                                                  <div class="exercise-container">
                                                                                     <% for (var i=0; i < supplementaryTabs[key].length; i++) { %>
+                                                                                       if ()
                                                                                        <div class="exercise-block <% if(i > 0) { %>d-none<% } %>" exercise_active="<% if(i > 0) { %>false<% } else { %>true<% } %>" id="exercise_00<%= i+1 %>">
                                                                                           <div class="col-12">
                                                                                              <header>
