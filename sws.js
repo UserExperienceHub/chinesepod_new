@@ -93,7 +93,7 @@ http
               word: "历历在目",
               traditional: "離 鄉 多 年 了 但 家鄉 的 風景 依然 歷歷在目",
               pinyin:
-                "lí xiāng duō nián le ， dàn jiāxiāng de fēngjǐng yīrán lìlìzàimù 。",
+                "lí xiāng duō nián le , dàn jiāxiāng de fēngjǐng yīrán lìlìzàimù 。",
               english:
                 "Although he has been away from home for many years, the scenery of his hometown is still vivid in his mind.",
               audio:
@@ -103,7 +103,7 @@ http
               word: "历历在目",
               traditional: "離 鄉 多 年 了 但 家鄉 的 風景 依然 歷歷在目",
               pinyin:
-                "lí xiāng duō nián le ， dàn jiāxiāng de fēngjǐng yīrán lìlìzàimù 。",
+                "lí xiāng duō nián le , dàn jiāxiāng de fēngjǐng yīrán lìlìzàimù 。",
               english:
                 "Although he has been away from home for many years, the scenery of his hometown is still vivid in his mind.",
               audio:
