@@ -973,12 +973,11 @@
                                                                                                    <h1 class="title">Choose
                                                                                                       the right option</h1>
                                                                                                    <div class="scores">
-                                                                                                      <div
-                                                                                                         class="score-block">
-                                                                                                         <span
-                                                                                                            class="score">1</span><span
+                                                                                                      <div class="score-block">
+                                                                                                         <span class="score">1</span><span
                                                                                                             class="points">
-                                                                                                            point</span>
+                                                                                                            point
+                                                                                                         </span>
                                                                                                       </div>
                                                                                                    </div>
                                                                                                 </header>
@@ -990,64 +989,20 @@
                                                                                                 <div class="pinyin"><%= supplementaryTabs[key][i].pinyin %></div>
                                                                                              </div>
                                                                                              <div class="answers">
-                                                                                                <div
-                                                                                                   class="col-12 col-sm-6">
-                                                                                                   <button type="button"
-                                                                                                      class="btn btn-light btn-block mb-2">
-                                                                                                      <div class="row">
-                                                                                                         <div
-                                                                                                            class="col-12 characters">
-                                                                                                            毛骨悚然</div>
-                                                                                                         <div
-                                                                                                            class="col-12 pinyin text-white">
-                                                                                                            máogǔsǒngrán
+                                                                                                <% for (var j = 0; j < supplementaryTabs[key][i].answers.length; j++) { %>
+                                                                                                   <div class="col-12 col-sm-6">
+                                                                                                      <button type="button" class="btn btn-light btn-block mb-2">
+                                                                                                         <div class="row">
+                                                                                                            <div class="col-12 characters">
+                                                                                                               <%= supplementaryTabs[key][i].answers[j].traditional %>
+                                                                                                            </div>
+                                                                                                            <div class="col-12 pinyin text-white">
+                                                                                                               <%= supplementaryTabs[key][i].answers[j].pinyin %>
+                                                                                                            </div>
                                                                                                          </div>
-                                                                                                      </div>
-                                                                                                   </button>
-                                                                                                </div>
-                                                                                                <div
-                                                                                                   class="col-12 col-sm-6">
-                                                                                                   <button type="button"
-                                                                                                      class="btn btn-light btn-block mb-2">
-                                                                                                      <div class="row">
-                                                                                                         <div
-                                                                                                            class="col-12 characters">
-                                                                                                            刷劇</div>
-                                                                                                         <div
-                                                                                                            class="col-12 pinyin text-white">
-                                                                                                            shuājù</div>
-                                                                                                      </div>
-                                                                                                   </button>
-                                                                                                </div>
-                                                                                                <div
-                                                                                                   class="col-12 col-sm-6">
-                                                                                                   <button type="button"
-                                                                                                      class="btn btn-light btn-block mb-2">
-                                                                                                      <div class="row">
-                                                                                                         <div
-                                                                                                            class="col-12 characters">
-                                                                                                            妖魔鬼怪</div>
-                                                                                                         <div
-                                                                                                            class="col-12 pinyin text-white">
-                                                                                                            yāomóguǐguài
-                                                                                                         </div>
-                                                                                                      </div>
-                                                                                                   </button>
-                                                                                                </div>
-                                                                                                <div
-                                                                                                   class="col-12 col-sm-6">
-                                                                                                   <button type="button"
-                                                                                                      class="btn btn-light btn-block mb-2">
-                                                                                                      <div class="row">
-                                                                                                         <div
-                                                                                                            class="col-12 characters">
-                                                                                                            歷歷在目</div>
-                                                                                                         <div
-                                                                                                            class="col-12 pinyin text-white">
-                                                                                                            lìlìzàimù</div>
-                                                                                                      </div>
-                                                                                                   </button>
-                                                                                                </div>
+                                                                                                      </button>
+                                                                                                   </div>
+                                                                                                <% } %>
                                                                                              </div>
                                                                                           </div>
                                                                                        <% } else if (supplementaryTabs[key][i].type === 2) { %>

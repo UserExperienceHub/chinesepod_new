@@ -124,12 +124,12 @@ http
               traditional: "那個鬼故事聽得人",
               pinyin: "nàge guǐgùshi tīng de rén _____.",
               answers: [
-                { traditional: "毛骨悚然", pinyin: "máogǔsǒngrán" },
                 { traditional: "刷劇", pinyin: "shuājù" },
-                { traditional: "妖魔鬼怪", pinyin: "yāomóguǐguài" },
+                { traditional: "毛骨悚然", pinyin: "máogǔsǒngrán" },
                 { traditional: "歷歷在目", pinyin: "lìlìzàimù" },
+                { traditional: "妖魔鬼怪", pinyin: "yāomóguǐguài" }
               ],
-              
+              correct: { traditional: "毛骨悚然", pinyin: "máogǔsǒngrán" }
             },
             {
               type: 1,
@@ -138,9 +138,10 @@ http
               answers: [
                 { traditional: "毛骨悚然", pinyin: "máogǔsǒngrán" },
                 { traditional: "刷劇", pinyin: "shuājù" },
-                { traditional: "妖魔鬼怪", pinyin: "yāomóguǐguài" },
                 { traditional: "歷歷在目", pinyin: "lìlìzàimù" },
+                { traditional: "妖魔鬼怪", pinyin: "yāomóguǐguài" }
               ],
+              correct: { traditional: "毛骨悚然", pinyin: "máogǔsǒngrán" }
             },
             {
               type: 2,
@@ -167,6 +168,7 @@ http
                 { traditional: "當你看著屏幕中一個個腥羴色，暴力的鏡頭，這些啊，其實都會進入你的潛意識。", pinyin: "dāng nǐ kàn zhe píngmù zhōng yīgègè xīng shān sè,bàolì de jìngtóu,zhèxiē a,qíshí dōu huì jìnrù nǐ de qiányìshí." },
                 { traditional: "刷劇這種行為其實不只是放鬆，有的時候也可能變成一種放縱哦", pinyin: "shuājù zhèzhǒng xíngwéi qíshí bù zhǐshì fàngsōng,yǒu de shíhou yě kěnéng biànchéng yīzhǒng fàngzòng o." },
               ],
+              correct: { traditional: "刷劇這種行為其實不只是放鬆，有的時候也可能變成一種放縱哦", pinyin: "shuājù zhèzhǒng xíngwéi qíshí bù zhǐshì fàngsōng,yǒu de shíhou yě kěnéng biànchéng yīzhǒng fàngzòng o." }
             },
             {
               type: 4,
@@ -177,7 +179,8 @@ http
                 { traditional: "刷劇", pinyin: "shuājù" },
                 { traditional: "妖魔鬼怪", pinyin: "yāomóguǐguài" },
                 { traditional: "歷歷在目", pinyin: "lìlìzàimù" },
-              ]
+              ],
+              correct: { traditional: "毛骨悚然", pinyin: "máogǔsǒngrán" }
             },
           ],
           comments: [
