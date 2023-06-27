@@ -129,6 +129,7 @@ http
                 { traditional: "妖魔鬼怪", pinyin: "yāomóguǐguài" },
                 { traditional: "歷歷在目", pinyin: "lìlìzàimù" },
               ],
+              
             },
             {
               type: 1,
@@ -143,6 +144,32 @@ http
             },
             {
               type: 2,
+              chinese: [
+                { traditional: "毛骨悚然", pinyin: "máogǔsǒngrán", tag: "2" },
+                { traditional: "刷劇", pinyin: "shuājù", tag: "1" },
+                { traditional: "妖魔鬼怪", pinyin: "yāomóguǐguài", tag: "4" },
+                { traditional: "歷歷在目", pinyin: "lìlìzàimù", tag: "5" },
+                { traditional: "歷歷在目", pinyin: "yāomóguǐguài", tag: "3" } 
+              ],
+              english: [
+                { text: "binge watching", tag: "4" },
+                { text: "to indulge; to pamper; to connive at", tag: "1" },
+                { text: "to toss and turn restlessly (in the bed)", tag: "2" },
+                { text: "vivid in one's mind (idiom)", tag: "3" },
+                { text: "unconscious mind; subconscious mind; subconsciousness", tag: "5" }
+              ]
+            },
+            {
+              type: 3,
+              answers: [
+                { traditional: "當你看著屏幕中一個個腥羴色，暴力的鏡頭，這些啊，其實都會進入你的潛意識。", pinyin: "dāng nǐ kàn zhe píngmù zhōng yīgègè xīng shān sè,bàolì de jìngtóu,zhèxiē a,qíshí dōu huì jìnrù nǐ de qiányìshí." },
+                { traditional: "刷劇這種行為其實不只是放鬆，有的時候也可能變成一種放縱哦", pinyin: "shuājù zhèzhǒng xíngwéi qíshí bù zhǐshì fàngsōng,yǒu de shíhou yě kěnéng biànchéng yīzhǒng fàngzòng o." },
+                { traditional: "當你看著屏幕中一個個腥羴色，暴力的鏡頭，這些啊，其實都會進入你的潛意識。", pinyin: "dāng nǐ kàn zhe píngmù zhōng yīgègè xīng shān sè,bàolì de jìngtóu,zhèxiē a,qíshí dōu huì jìnrù nǐ de qiányìshí." },
+                { traditional: "刷劇這種行為其實不只是放鬆，有的時候也可能變成一種放縱哦", pinyin: "shuājù zhèzhǒng xíngwéi qíshí bù zhǐshì fàngsōng,yǒu de shíhou yě kěnéng biànchéng yīzhǒng fàngzòng o." },
+              ],
+            },
+            {
+              type: 4,
               traditional: "這段往事直到現在還使我",
               pinyin: "duàn wǎngshì zhídào xiànzài hái shǐ wǒ _____ ne!",
               answers: [
@@ -150,7 +177,7 @@ http
                 { traditional: "刷劇", pinyin: "shuājù" },
                 { traditional: "妖魔鬼怪", pinyin: "yāomóguǐguài" },
                 { traditional: "歷歷在目", pinyin: "lìlìzàimù" },
-              ],
+              ]
             },
           ],
           comments: [
