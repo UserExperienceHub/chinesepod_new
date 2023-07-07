@@ -1,0 +1,54 @@
+[
+    {
+        "file": "/www.buxtron.com.zip",
+        "error": "ENOENT: no such file or directory, open './public/logos/main.logo.www.buxtron.com.png'"     
+      },
+      {
+        "file": "/www.carveza.com.zip",
+        "error": "ENOENT: no such file or directory, open './public/logos/main.logo.www.carveza.com.png'"     
+      },
+      {
+        "file": "/www.dotuber.com.zip",
+        "error": "ENOENT: no such file or directory, open './public/logos/main.logo.www.dotuber.com.png'"     
+      },
+      {
+        "file": "/www.estravo.com.zip",
+        "error": "ENOENT: no such file or directory, open './public/logos/main.logo.www.estravo.com.png'"     
+      },
+      {
+        "file": "/www.grandogo.com.zip",
+        "error": "ENOENT: no such file or directory, open './public/logos/main.logo.www.grandogo.com.png'"    
+      },
+      {
+        "file": "/www.intergitl.com.zip",
+        "error": "ENOENT: no such file or directory, open './public/logos/main.logo.www.intergitl.com.png'"   
+      },
+      {
+        "file": "/www.lingeriedivegirls.com.zip",
+        "error": "ENOENT: no such file or directory, open './public/logos/main.logo.www.lingeriedivegirls.com.png'"
+      },
+      {
+        "file": "/www.loanary.com.zip",
+        "error": "ENOENT: no such file or directory, open './public/logos/main.logo.www.loanary.com.png'"     
+      },
+      {
+        "file": "/www.lockzi.com.zip",
+        "error": "ENOENT: no such file or directory, open './public/logos/main.logo.www.lockzi.com.png'"      
+      },
+      {
+        "file": "/www.mukase.com.zip",
+        "error": "ENOENT: no such file or directory, open './public/logos/main.logo.www.mukase.com.png'"      
+      },
+      {
+        "file": "/www.nauticalangels.com.zip",
+        "error": "ENOENT: no such file or directory, open './public/logos/main.logo.www.nauticalangels.com.png'"
+      },
+      {
+        "file": "/www.potovo.com.zip",
+        "error": "ENOENT: no such file or directory, open './public/logos/main.logo.www.potovo.com.png'"      
+      },
+      {
+        "file": "/www.wendpress.com.zip",
+        "error": "ENOENT: no such file or directory, open './public/logos/main.logo.www.wendpress.com.png'"   
+      }
+]

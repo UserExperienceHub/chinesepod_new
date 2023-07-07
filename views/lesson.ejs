@@ -515,13 +515,13 @@
                         class="nav nav-pills nav-pills-primary nav-fill flex-sm-row nav-wrapper">
                         <% for(let key in supplementaryTabs) {%>
                            <li role="presentation" class="nav-item mt-2 mx-1">
-                              <button class="nav-link <% if(key === "dialogue"){ %>active<%}%>" data-bs-toggle="pill"
+                              <button class="nav-link <% if(key === " dialogue"){ %>active<%}%>" data-bs-toggle="pill"
                                     data-bs-target="#pills-<%= key %>" type="button" role="tab" aria-controls="pills-<%=
                                           key %>" aria-selected="true">
                                           <div>
                                              <span>
                                                 <i class="far 
-									                     <% if(key === "dialogue"){ %>
+									                     <% if(key === " dialogue"){ %>
                                                    fa-comment-alt-dots
                                                    <%} else if(key==="vocabulary" ){%>
                                                       fa-clipboard-list
@@ -548,7 +548,7 @@
                   </div>
                   <div id="pills-tabContent" class="tab-content tab-space card shadow">
                      <% for(let key in supplementaryTabs) {%>
-                        <div class="tab-pane fade <% if(key === "dialogue"){ %>show active<%}%>" id="pills-<%= key %>"
+                        <div class="tab-pane fade <% if(key === " dialogue"){ %>show active<%}%>" id="pills-<%= key %>"
                                  role="tabpanel"aria-labelledby="pills-<%= key %>-tab">
                                     <div class="card-body <%= key %>">
                                        <div>
@@ -937,26 +937,36 @@
                                                                                           <div class="col">
                                                                                              <div class="row">
                                                                                                 <div class="col">
-                                                                                                   <h5 class="card-title text-uppercase mb-0 text-white">
+                                                                                                   <h5
+                                                                                                      class="card-title text-uppercase mb-0 text-white">
                                                                                                       Previous Results
                                                                                                    </h5>
-                                                                                                   <span class="h2 font-weight-bold mb-0 text-white">Taken: 3 times</span>
+                                                                                                   <span
+                                                                                                      class="h2 font-weight-bold mb-0 text-white">Taken:
+                                                                                                      3 times</span>
                                                                                                 </div>
                                                                                                 <div class="col-auto">
-                                                                                                   <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
-                                                                                                      <i class="fa fa-star"></i>
+                                                                                                   <div
+                                                                                                      class="icon icon-shape bg-white text-dark rounded-circle shadow">
+                                                                                                      <i
+                                                                                                         class="fa fa-star"></i>
                                                                                                    </div>
                                                                                                 </div>
                                                                                              </div>
                                                                                              <p
                                                                                                 class="h3 mt-3 mb-0 text-sm">
                                                                                                 <span
-                                                                                                   class="text-nowrap text-white">Last score: </span>
+                                                                                                   class="text-nowrap text-white">Last
+                                                                                                   score: </span>
                                                                                                 <span
-                                                                                                   class="text-white mr-2">6 / 19</span>
+                                                                                                   class="text-white mr-2">6
+                                                                                                   / 19</span>
                                                                                              </p>
                                                                                              <p class="mb-0 text-sm">
-                                                                                                <span class="text-white">Aim for at least 70%. Try again!</span>
+                                                                                                <span
+                                                                                                   class="text-white">Aim
+                                                                                                   for at least 70%. Try
+                                                                                                   again!</span>
                                                                                              </p>
                                                                                           </div>
                                                                                        </div>
@@ -965,16 +975,27 @@
                                                                               </div>
                                                                               <div class="exercise-view">
                                                                                  <div class="exercise-container">
-                                                                                    <% for (var i=0; i < supplementaryTabs[key].length; i++) { %>
-                                                                                       <% if (supplementaryTabs[key][i].type === 1) { %>
-                                                                                          <div class="exercise-block <% if(i > 0) { %>d-none<% } %>" exercise_active="<% if(i > 0) { %>false<% } else { %>true<% } %>" id="exercise_00<%= i+1 %>">
+                                                                                    <% for (var i=0; i <
+                                                                                       supplementaryTabs[key].length;
+                                                                                       i++) { %>
+                                                                                       <% if
+                                                                                          (supplementaryTabs[key][i].type===1)
+                                                                                          { %>
+                                                                                          <div
+                                                                                             class="exercise-block <% if(i > 0) { %>d-none<% } %>"
+                                                                                             exercise_active="<% if(i > 0) { %>false<% } else { %>true<% } %>"
+                                                                                             id="exercise_00<%= i+1 %>">
                                                                                              <div class="col-12">
                                                                                                 <header>
-                                                                                                   <h1 class="title">Choose
-                                                                                                      the right option</h1>
+                                                                                                   <h1 class="title">
+                                                                                                      Choose
+                                                                                                      the right option
+                                                                                                   </h1>
                                                                                                    <div class="scores">
-                                                                                                      <div class="score-block">
-                                                                                                         <span class="score">1</span><span
+                                                                                                      <div
+                                                                                                         class="score-block">
+                                                                                                         <span
+                                                                                                            class="score">1</span><span
                                                                                                             class="points">
                                                                                                             point
                                                                                                          </span>
@@ -982,196 +1003,510 @@
                                                                                                    </div>
                                                                                                 </header>
                                                                                              </div>
-                                                                                             <div class="sentence-to-fill">
+                                                                                             <div
+                                                                                                class="sentence-to-fill">
                                                                                                 <div class="chinese">
-                                                                                                   <%= supplementaryTabs[key][i].traditional %>
+                                                                                                   <%= supplementaryTabs[key][i].traditional
+                                                                                                      %>
                                                                                                 </div>
-                                                                                                <div class="pinyin"><%= supplementaryTabs[key][i].pinyin %></div>
+                                                                                                <div class="pinyin">
+                                                                                                   <%= supplementaryTabs[key][i].pinyin
+                                                                                                      %>
+                                                                                                </div>
                                                                                              </div>
                                                                                              <div class="answers">
-                                                                                                <% for (var j = 0; j < supplementaryTabs[key][i].answers.length; j++) { %>
-                                                                                                   <div class="col-12 col-sm-6">
-                                                                                                      <button type="button" class="btn btn-light btn-block mb-2">
-                                                                                                         <div class="row">
-                                                                                                            <div class="col-12 characters">
+                                                                                                <% for (var j=0; j <
+                                                                                                   supplementaryTabs[key][i].answers.length;
+                                                                                                   j++) { %>
+                                                                                                   <div
+                                                                                                      class="col-12 col-sm-6">
+                                                                                                      <button
+                                                                                                         type="button"
+                                                                                                         class="btn btn-light btn-block mb-2 mcqs"
+                                                                                                         val="<%= supplementaryTabs[key][i].answers[j].traditional %>"
+                                                                                                         correct="<%= supplementaryTabs[key][i].correct %>">
+                                                                                                         <div
+                                                                                                            class="row">
+                                                                                                            <div
+                                                                                                               class="col-12 characters">
                                                                                                                <%= supplementaryTabs[key][i].answers[j].traditional %>
                                                                                                             </div>
-                                                                                                            <div class="col-12 pinyin text-white">
+                                                                                                            <div
+                                                                                                               class="col-12 pinyin text-white">
                                                                                                                <%= supplementaryTabs[key][i].answers[j].pinyin %>
                                                                                                             </div>
                                                                                                          </div>
                                                                                                       </button>
                                                                                                    </div>
-                                                                                                <% } %>
+                                                                                                   <% } %>
+                                                                                                      <script>
+                                                                                                         var marks = 0;
+                                                                                                         var mcqs = document.querySelectorAll('.mcqs')
+                                                                                                         mcqs.forEach(mcq => {
+                                                                                                            mcq.addEventListener('click', function(e) {
+                                                                                                               console.log(mcq.getAttribute('val'))
+                                                                                                               console.log(mcq.getAttribute('correct'))
+                                                                                                               if (mcq.getAttribute('val') == mcq.getAttribute('correct')) {
+                                                                                                                  marks++
+                                                                                                               }
+                                                                                                               console.log(marks)
+                                                                                                               callNextExercise()
+                                                                                                            })
+                                                                                                         })
+                                                                                                      </script>
                                                                                              </div>
                                                                                           </div>
-                                                                                       <% } else if (supplementaryTabs[key][i].type === 2) { %>
-                                                                                          <div class="exercise-block d-none" exercise_active="flase" id="exercise_00<%= i+1 %>">
-                                                                                             <div class="col-12">
-                                                                                                <header>
-                                                                                                   <h1 class="title">Match the phrase with the translation</h1>
-                                                                                                   <div class="scores">
-                                                                                                      <div class="score-block"><span class="score">5</span><span class="points"> points</span></div>
-                                                                                                   </div>
-                                                                                                </header>
-                                                                                             </div>
-                                                                                             <div id="parts-120357" class="parts">
-                                                                                                <div class="parts-left col-6">
-                                                                                                   <% supplementaryTabs[key][i].chinese.forEach((elem, index) => { %>
-                                                                                                      <button type="button" class="btn btn-light btn-block mb-2" data-tag="<%= elem.tag %>">
-                                                                                                         <div class="row">
-                                                                                                            <div class="col-12 characters"><%= elem.traditional %></div>
-                                                                                                            <div class="col-12 pinyin text-white"><%= elem.pinyin%></div>
+                                                                                          <% } else if
+                                                                                             (supplementaryTabs[key][i].type===2)
+                                                                                             { %>
+                                                                                             <div
+                                                                                                class="exercise-block d-none"
+                                                                                                exercise_active="flase"
+                                                                                                id="exercise_00<%= i+1 %>">
+                                                                                                <div class="col-12">
+                                                                                                   <header>
+                                                                                                      <h1 class="title">
+                                                                                                         Match the
+                                                                                                         phrase with the
+                                                                                                         translation
+                                                                                                      </h1>
+                                                                                                      <div
+                                                                                                         class="scores">
+                                                                                                         <div
+                                                                                                            class="score-block">
+                                                                                                            <span
+                                                                                                               class="score">5</span><span
+                                                                                                               class="points">
+                                                                                                               points</span>
                                                                                                          </div>
-                                                                                                      </button>
-                                                                                                   <% }) %>
-                                                                                                </div>
-                                                                                                <div class="parts-right col-6">
-                                                                                                   <% supplementaryTabs[key][i].english.forEach((elem, index) => { %>
-                                                                                                   <button type="button" class="btn btn-light btn-block mb-2" data-tag="<%= elem.tag %>">
-                                                                                                      <div class="row">
-                                                                                                         <div class="col-12 english text-white"><%= elem.text %></div>
                                                                                                       </div>
-                                                                                                   </button>
-                                                                                                   <% }) %>
+                                                                                                   </header>
                                                                                                 </div>
-                                                                                             </div>
-                                                                                          </div>
-                                                                                       <% } else if (supplementaryTabs[key][i].type === 3) { %>
-                                                                                          <div class="exercise-block d-none" exercise_active="flase" id="exercise_00<%= i+1 %>">
-                                                                                             <div class="col-12">
-                                                                                                <header>
-                                                                                                   <h1 class="title">Re-order the segments</h1>
-                                                                                                   <div class="scores">
-                                                                                                      <div class="score-block"><span class="score">6</span><span class="points"> points</span></div>
+                                                                                                <div id="parts-120357"
+                                                                                                   class="parts">
+                                                                                                   <div
+                                                                                                      class="parts-left col-6">
+                                                                                                      <% supplementaryTabs[key][i].chinese.forEach((elem,
+                                                                                                         index)=> { %>
+                                                                                                         <button
+                                                                                                            type="button"
+                                                                                                            class="btn btn-light btn-block mb-2"
+                                                                                                            data-tag="<%= elem.tag %>">
+                                                                                                            <div
+                                                                                                               class="row">
+                                                                                                               <div
+                                                                                                                  class="col-12 characters">
+                                                                                                                  <%= elem.traditional
+                                                                                                                     %>
+                                                                                                               </div>
+                                                                                                               <div
+                                                                                                                  class="col-12 pinyin text-white">
+                                                                                                                  <%=
+                                                                                                                     elem.pinyin%>
+                                                                                                               </div>
+                                                                                                            </div>
+                                                                                                         </button>
+                                                                                                         <% }) %>
                                                                                                    </div>
-                                                                                                </header>
+                                                                                                   <div
+                                                                                                      class="parts-right col-6">
+                                                                                                      <% supplementaryTabs[key][i].english.forEach((elem,
+                                                                                                         index)=> { %>
+                                                                                                         <button
+                                                                                                            type="button"
+                                                                                                            class="btn btn-light btn-block mb-2"
+                                                                                                            data-tag="<%= elem.tag %>">
+                                                                                                            <div
+                                                                                                               class="row">
+                                                                                                               <div
+                                                                                                                  class="col-12 english text-white">
+                                                                                                                  <%= elem.text
+                                                                                                                     %>
+                                                                                                               </div>
+                                                                                                            </div>
+                                                                                                         </button>
+                                                                                                         <% }) %>
+                                                                                                   </div>
+                                                                                                </div>
                                                                                              </div>
-                                                                                             <div class="draggable-sentences">
-                                                                                                <% supplementaryTabs[key][i].answers.forEach((elem, index) => { %>
-                                                                                                <div class="card bg-gradient-lighter">
-                                                                                                   <div class="card-body row">
-                                                                                                      <div class="col-10 col-sm-11">
-                                                                                                         <span class="characters">當你看著屏幕中一個個腥羴色，暴力的鏡頭，這些啊，其實都會進入你的潛意識。</span>
-                                                                                                         <footer class="pinyin">dāng nǐ kàn zhe píngmù zhōng yīgègè xīng shān sè,bàolì de jìngtóu,zhèxiē a,qíshí dōu huì jìnrù nǐ de qiányìshí.</footer>
+                                                                                             <% } else if
+                                                                                                (supplementaryTabs[key][i].type===3)
+                                                                                                { %>
+                                                                                                <div
+                                                                                                   class="exercise-block d-none"
+                                                                                                   exercise_active="flase"
+                                                                                                   id="exercise_00<%= i+1 %>">
+                                                                                                   <div class="col-12">
+                                                                                                      <header>
+                                                                                                         <h1
+                                                                                                            class="title">
+                                                                                                            Re-order the
+                                                                                                            segments
+                                                                                                         </h1>
+                                                                                                         <div
+                                                                                                            class="scores">
+                                                                                                            <div
+                                                                                                               class="score-block">
+                                                                                                               <span
+                                                                                                                  class="score">6</span><span
+                                                                                                                  class="points">
+                                                                                                                  points</span>
+                                                                                                            </div>
+                                                                                                         </div>
+                                                                                                      </header>
+                                                                                                   </div>
+                                                                                                   <div
+                                                                                                      class="draggable-sentences">
+                                                                                                      <% supplementaryTabs[key][i].answers.forEach((elem,
+                                                                                                         index)=> { %>
+                                                                                                         <div
+                                                                                                            class="card bg-gradient-lighter">
+                                                                                                            <div
+                                                                                                               class="card-body row">
+                                                                                                               <div
+                                                                                                                  class="col-10 col-sm-11">
+                                                                                                                  <span
+                                                                                                                     class="characters">當你看著屏幕中一個個腥羴色，暴力的鏡頭，這些啊，其實都會進入你的潛意識。</span>
+                                                                                                                  <footer
+                                                                                                                     class="pinyin">
+                                                                                                                     dāng
+                                                                                                                     nǐ
+                                                                                                                     kàn
+                                                                                                                     zhe
+                                                                                                                     píngmù
+                                                                                                                     zhōng
+                                                                                                                     yīgègè
+                                                                                                                     xīng
+                                                                                                                     shān
+                                                                                                                     sè,bàolì
+                                                                                                                     de
+                                                                                                                     jìngtóu,zhèxiē
+                                                                                                                     a,qíshí
+                                                                                                                     dōu
+                                                                                                                     huì
+                                                                                                                     jìnrù
+                                                                                                                     nǐ
+                                                                                                                     de
+                                                                                                                     qiányìshí.
+                                                                                                                  </footer>
+                                                                                                               </div>
+                                                                                                               <div
+                                                                                                                  class="col-2 col-sm-1">
+                                                                                                                  <div
+                                                                                                                     class="row">
+                                                                                                                     <div
+                                                                                                                        class="col-12">
+                                                                                                                        <button
+                                                                                                                           type="button"
+                                                                                                                           class="btn btn-icon-only mb-2 btn-secondary btn-lg"
+                                                                                                                           style="display: none;">
+                                                                                                                           <i
+                                                                                                                              class="text-lg fa fa-chevron-up"></i>
+                                                                                                                        </button>
+                                                                                                                     </div>
+                                                                                                                  </div>
+                                                                                                               </div>
+                                                                                                            </div>
+                                                                                                         </div>
+                                                                                                         <% }) %>
+                                                                                                   </div>
+                                                                                                </div>
+                                                                                                <% } else if
+                                                                                                   (supplementaryTabs[key][i].type===4)
+                                                                                                   { %>
+                                                                                                   <div
+                                                                                                      class="exercise-block d-none"
+                                                                                                      exercise_active="flase"
+                                                                                                      id="exercise_00<%= i+1 %>">
+                                                                                                      <div
+                                                                                                         class="col-12">
+                                                                                                         <header>
+                                                                                                            <h1
+                                                                                                               class="title">
+                                                                                                               Listen
+                                                                                                               and type
+                                                                                                            </h1>
+                                                                                                            <div
+                                                                                                               class="scores">
+                                                                                                               <div
+                                                                                                                  class="score-block">
+                                                                                                                  <span
+                                                                                                                     class="score">1</span><span
+                                                                                                                     class="points">
+                                                                                                                     point</span>
+                                                                                                               </div>
+                                                                                                            </div>
+                                                                                                            <div
+                                                                                                               class="exercise-number">
+                                                                                                               Exercise
+                                                                                                               1.</div>
+                                                                                                         </header>
                                                                                                       </div>
-                                                                                                      <div class="col-2 col-sm-1">
-                                                                                                         <div class="row">
-                                                                                                            <div class="col-12">
-                                                                                                               <button type="button" class="btn btn-icon-only mb-2 btn-secondary btn-lg" style="display: none;">
-                                                                                                               <i class="text-lg fa fa-chevron-up"></i>
-                                                                                                               </button>
+                                                                                                      <div
+                                                                                                         class="sentence col-12 mb-3">
+                                                                                                         <div
+                                                                                                            class="form-group w-100">
+                                                                                                            <div
+                                                                                                               class="input-group">
+                                                                                                               <div
+                                                                                                                  id="button-addon1"
+                                                                                                                  class="input-group-prepend">
+                                                                                                                  <button
+                                                                                                                     type="button"
+                                                                                                                     class="btn btn-outline-primary"><i
+                                                                                                                        class="fa ni-lg fa fa-play"></i></button>
+                                                                                                                  <audio
+                                                                                                                     src="https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3"></audio>
+                                                                                                               </div>
+                                                                                                               <input
+                                                                                                                  type="text"
+                                                                                                                  placeholder="Type-in what you hear..."
+                                                                                                                  autofocus="autofocus"
+                                                                                                                  aria-label="Listening Practice Input"
+                                                                                                                  aria-describedby="button-addon1"
+                                                                                                                  class="form-control"><small
+                                                                                                                  class="font-italic"></small>
+                                                                                                            </div>
+                                                                                                            <div
+                                                                                                               class="valid-feedback">
                                                                                                             </div>
                                                                                                          </div>
                                                                                                       </div>
+                                                                                                      <p
+                                                                                                         class="exercise-description exercise-description--small">
+                                                                                                         To type in
+                                                                                                         Chinese, you'll
+                                                                                                         need to first
+                                                                                                         install a
+                                                                                                         Chinese
+                                                                                                         keyboard on
+                                                                                                         your phone or
+                                                                                                         computer. To
+                                                                                                         write in
+                                                                                                         Pinyin, you can
+                                                                                                         use an English
+                                                                                                         keyboard and
+                                                                                                         use numbers for
+                                                                                                         tones. e.g.
+                                                                                                         ni3hao3</p>
                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <% }) %>
-                                                                                             </div>
-                                                                                          </div>
-                                                                                       <% } else if (supplementaryTabs[key][i].type === 4) { %>
-                                                                                          <div class="exercise-block d-none" exercise_active="flase" id="exercise_00<%= i+1 %>">
-                                                                                             <div class="col-12">
-                                                                                                <header>
-                                                                                                   <h1 class="title">Listen and type</h1>
-                                                                                                   <div class="scores">
-                                                                                                      <div class="score-block"><span class="score">1</span><span class="points"> point</span></div>
-                                                                                                   </div>
-                                                                                                   <div class="exercise-number">Exercise 1.</div>
-                                                                                                </header>
-                                                                                             </div>
-                                                                                             <div class="sentence col-12 mb-3">
-                                                                                                <div class="form-group w-100">
-                                                                                                   <div class="input-group">
-                                                                                                      <div id="button-addon1" class="input-group-prepend">
-                                                                                                         <button type="button" class="btn btn-outline-primary"><i class="fa ni-lg fa fa-play"></i></button>
-                                                                                                         <audio src="https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3"></audio>
-                                                                                                      </div>
-                                                                                                      <input type="text" placeholder="Type-in what you hear..." autofocus="autofocus" aria-label="Listening Practice Input" aria-describedby="button-addon1" class="form-control"><small class="font-italic"></small>
-                                                                                                   </div>
-                                                                                                   <div class="valid-feedback"></div>
-                                                                                                </div>
-                                                                                             </div>
-                                                                                             <p class="exercise-description exercise-description--small"> To type in Chinese, you'll need to first install a Chinese keyboard on your phone or computer. To write in Pinyin, you can use an English keyboard and use numbers for tones. e.g. ni3hao3</p>
-                                                                                          </div>
-                                                                                       <% } %>
-                                                                                    <% } %>
-                                                                                    <div class="exercise-block d-none" exercise_active="flase" id="exercise_003">
-                                                                                       <div class="col-12">
-                                                                                          <header>
-                                                                                             <h1 class="title">Match the phrase with the translation</h1>
-                                                                                             <div class="scores">
-                                                                                                <div class="score-block"><span class="score">5</span><span class="points"> points</span></div>
-                                                                                             </div>
-                                                                                          </header>
-                                                                                       </div>
-                                                                                       <div id="parts-120357" class="parts">
-                                                                                          <div class="parts-left col-6">
-                                                                                             <button type="button" class="btn btn-light btn-block mb-2" data-tag="3">
-                                                                                                <div class="row">
-                                                                                                   <div class="col-12 characters">潛意識</div>
-                                                                                                   <div class="col-12 pinyin text-white">qiányìshí</div>
-                                                                                                </div>
-                                                                                             </button>
-                                                                                             <button type="button" class="btn btn-light btn-block mb-2" data-tag="2">
-                                                                                                <div class="row">
-                                                                                                   <div class="col-12 characters">刷劇</div>
-                                                                                                   <div class="col-12 pinyin text-white">shuājù</div>
-                                                                                                </div>
-                                                                                             </button>
-                                                                                             <button type="button" class="btn btn-light btn-block mb-2" data-tag="5">
-                                                                                                <div class="row">
-                                                                                                   <div class="col-12 characters">放縱</div>
-                                                                                                   <div class="col-12 pinyin text-white">fàngzòng</div>
-                                                                                                </div>
-                                                                                             </button>
-                                                                                             <button type="button" class="btn btn-light btn-block mb-2" data-tag="1">
-                                                                                                <div class="row">
-                                                                                                   <div class="col-12 characters">歷歷在目</div>
-                                                                                                   <div class="col-12 pinyin text-white">lìlìzàimù</div>
-                                                                                                </div>
-                                                                                             </button>
-                                                                                             <button type="button" class="btn btn-light btn-block mb-2" data-tag="4">
-                                                                                                <div class="row">
-                                                                                                   <div class="col-12 characters">輾轉反側</div>
-                                                                                                   <div class="col-12 pinyin text-white">zhǎnzhuǎnfǎncè</div>
-                                                                                                </div>
-                                                                                             </button>
-                                                                                          </div>
-                                                                                          <div class="parts-right col-6">
-                                                                                             <button type="button" class="btn btn-light btn-block mb-2" data-tag="2">
-                                                                                                <div class="row">
-                                                                                                   <div class="col-12 english text-white">binge watching</div>
-                                                                                                </div>
-                                                                                             </button>
-                                                                                             <button type="button" class="btn btn-light btn-block mb-2" data-tag="5">
-                                                                                                <div class="row">
-                                                                                                   <div class="col-12 english text-white">to indulge; to pamper; to connive at</div>
-                                                                                                </div>
-                                                                                             </button>
-                                                                                             <button type="button" class="btn btn-light btn-block mb-2" data-tag="4">
-                                                                                                <div class="row">
-                                                                                                   <div class="col-12 english text-white">to toss and turn restlessly (in the bed)</div>
-                                                                                                </div>
-                                                                                             </button>
-                                                                                             <button type="button" class="btn btn-light btn-block mb-2" data-tag="1">
-                                                                                                <div class="row">
-                                                                                                   <div class="col-12 english text-white">vivid in one's mind (idiom)</div>
-                                                                                                </div>
-                                                                                             </button>
-                                                                                             <button type="button" class="btn btn-light btn-block mb-2" data-tag="3">
-                                                                                                <div class="row">
-                                                                                                   <div class="col-12 english text-white">unconscious mind; subconscious mind; subconsciousness</div>
-                                                                                                </div>
-                                                                                             </button>
-                                                                                          </div>
-                                                                                       </div>
-                                                                                    </div>
-                                                                                    <div class="button-wrapper">
-                                                                                       <button type="button" id="btn_next_exercise" test_pahse="true" class="btn text-capitalize text-lg btn-secondary" data-bs-toggle="modal" data-bs-target="#exercise_modal">
-                                                                                       Next exercise<i class="ml-2 fa fa-arrow-right"></i>
-                                                                                       </button>
-                                                                                    </div>
+                                                                                                   <% } %>
+                                                                                                      <% } %>
+                                                                                                         <div
+                                                                                                            class="exercise-block d-none"
+                                                                                                            exercise_active="flase"
+                                                                                                            id="exercise_003">
+                                                                                                            <div
+                                                                                                               class="col-12">
+                                                                                                               <header>
+                                                                                                                  <h1
+                                                                                                                     class="title">
+                                                                                                                     Match
+                                                                                                                     the
+                                                                                                                     phrase
+                                                                                                                     with
+                                                                                                                     the
+                                                                                                                     translation
+                                                                                                                  </h1>
+                                                                                                                  <div
+                                                                                                                     class="scores">
+                                                                                                                     <div
+                                                                                                                        class="score-block">
+                                                                                                                        <span
+                                                                                                                           class="score">5</span><span
+                                                                                                                           class="points">
+                                                                                                                           points</span>
+                                                                                                                     </div>
+                                                                                                                  </div>
+                                                                                                               </header>
+                                                                                                            </div>
+                                                                                                            <div
+                                                                                                               id="parts-120357"
+                                                                                                               class="parts">
+                                                                                                               <div
+                                                                                                                  class="parts-left col-6">
+                                                                                                                  <button
+                                                                                                                     type="button"
+                                                                                                                     class="btn btn-light btn-block mb-2"
+                                                                                                                     data-tag="3">
+                                                                                                                     <div
+                                                                                                                        class="row">
+                                                                                                                        <div
+                                                                                                                           class="col-12 characters">
+                                                                                                                           潛意識
+                                                                                                                        </div>
+                                                                                                                        <div
+                                                                                                                           class="col-12 pinyin text-white">
+                                                                                                                           qiányìshí
+                                                                                                                        </div>
+                                                                                                                     </div>
+                                                                                                                  </button>
+                                                                                                                  <button
+                                                                                                                     type="button"
+                                                                                                                     class="btn btn-light btn-block mb-2"
+                                                                                                                     data-tag="2">
+                                                                                                                     <div
+                                                                                                                        class="row">
+                                                                                                                        <div
+                                                                                                                           class="col-12 characters">
+                                                                                                                           刷劇
+                                                                                                                        </div>
+                                                                                                                        <div
+                                                                                                                           class="col-12 pinyin text-white">
+                                                                                                                           shuājù
+                                                                                                                        </div>
+                                                                                                                     </div>
+                                                                                                                  </button>
+                                                                                                                  <button
+                                                                                                                     type="button"
+                                                                                                                     class="btn btn-light btn-block mb-2"
+                                                                                                                     data-tag="5">
+                                                                                                                     <div
+                                                                                                                        class="row">
+                                                                                                                        <div
+                                                                                                                           class="col-12 characters">
+                                                                                                                           放縱
+                                                                                                                        </div>
+                                                                                                                        <div
+                                                                                                                           class="col-12 pinyin text-white">
+                                                                                                                           fàngzòng
+                                                                                                                        </div>
+                                                                                                                     </div>
+                                                                                                                  </button>
+                                                                                                                  <button
+                                                                                                                     type="button"
+                                                                                                                     class="btn btn-light btn-block mb-2"
+                                                                                                                     data-tag="1">
+                                                                                                                     <div
+                                                                                                                        class="row">
+                                                                                                                        <div
+                                                                                                                           class="col-12 characters">
+                                                                                                                           歷歷在目
+                                                                                                                        </div>
+                                                                                                                        <div
+                                                                                                                           class="col-12 pinyin text-white">
+                                                                                                                           lìlìzàimù
+                                                                                                                        </div>
+                                                                                                                     </div>
+                                                                                                                  </button>
+                                                                                                                  <button
+                                                                                                                     type="button"
+                                                                                                                     class="btn btn-light btn-block mb-2"
+                                                                                                                     data-tag="4">
+                                                                                                                     <div
+                                                                                                                        class="row">
+                                                                                                                        <div
+                                                                                                                           class="col-12 characters">
+                                                                                                                           輾轉反側
+                                                                                                                        </div>
+                                                                                                                        <div
+                                                                                                                           class="col-12 pinyin text-white">
+                                                                                                                           zhǎnzhuǎnfǎncè
+                                                                                                                        </div>
+                                                                                                                     </div>
+                                                                                                                  </button>
+                                                                                                               </div>
+                                                                                                               <div
+                                                                                                                  class="parts-right col-6">
+                                                                                                                  <button
+                                                                                                                     type="button"
+                                                                                                                     class="btn btn-light btn-block mb-2"
+                                                                                                                     data-tag="2">
+                                                                                                                     <div
+                                                                                                                        class="row">
+                                                                                                                        <div
+                                                                                                                           class="col-12 english text-white">
+                                                                                                                           binge
+                                                                                                                           watching
+                                                                                                                        </div>
+                                                                                                                     </div>
+                                                                                                                  </button>
+                                                                                                                  <button
+                                                                                                                     type="button"
+                                                                                                                     class="btn btn-light btn-block mb-2"
+                                                                                                                     data-tag="5">
+                                                                                                                     <div
+                                                                                                                        class="row">
+                                                                                                                        <div
+                                                                                                                           class="col-12 english text-white">
+                                                                                                                           to
+                                                                                                                           indulge;
+                                                                                                                           to
+                                                                                                                           pamper;
+                                                                                                                           to
+                                                                                                                           connive
+                                                                                                                           at
+                                                                                                                        </div>
+                                                                                                                     </div>
+                                                                                                                  </button>
+                                                                                                                  <button
+                                                                                                                     type="button"
+                                                                                                                     class="btn btn-light btn-block mb-2"
+                                                                                                                     data-tag="4">
+                                                                                                                     <div
+                                                                                                                        class="row">
+                                                                                                                        <div
+                                                                                                                           class="col-12 english text-white">
+                                                                                                                           to
+                                                                                                                           toss
+                                                                                                                           and
+                                                                                                                           turn
+                                                                                                                           restlessly
+                                                                                                                           (in
+                                                                                                                           the
+                                                                                                                           bed)
+                                                                                                                        </div>
+                                                                                                                     </div>
+                                                                                                                  </button>
+                                                                                                                  <button
+                                                                                                                     type="button"
+                                                                                                                     class="btn btn-light btn-block mb-2"
+                                                                                                                     data-tag="1">
+                                                                                                                     <div
+                                                                                                                        class="row">
+                                                                                                                        <div
+                                                                                                                           class="col-12 english text-white">
+                                                                                                                           vivid
+                                                                                                                           in
+                                                                                                                           one's
+                                                                                                                           mind
+                                                                                                                           (idiom)
+                                                                                                                        </div>
+                                                                                                                     </div>
+                                                                                                                  </button>
+                                                                                                                  <button
+                                                                                                                     type="button"
+                                                                                                                     class="btn btn-light btn-block mb-2"
+                                                                                                                     data-tag="3">
+                                                                                                                     <div
+                                                                                                                        class="row">
+                                                                                                                        <div
+                                                                                                                           class="col-12 english text-white">
+                                                                                                                           unconscious
+                                                                                                                           mind;
+                                                                                                                           subconscious
+                                                                                                                           mind;
+                                                                                                                           subconsciousness
+                                                                                                                        </div>
+                                                                                                                     </div>
+                                                                                                                  </button>
+                                                                                                               </div>
+                                                                                                            </div>
+                                                                                                         </div>
+                                                                                                         <div
+                                                                                                            class="button-wrapper">
+                                                                                                            <button
+                                                                                                               type="button"
+                                                                                                               id="btn_next_exercise"
+                                                                                                               test_pahse="true"
+                                                                                                               class="btn text-capitalize text-lg btn-secondary"
+                                                                                                               data-bs-toggle="modal"
+                                                                                                               data-bs-target="#exercise_modal">
+                                                                                                               Next
+                                                                                                               exercise<i
+                                                                                                                  class="ml-2 fa fa-arrow-right"></i>
+                                                                                                            </button>
+                                                                                                         </div>
                                                                                  </div>
                                                                               </div>
                                                                            </div>
