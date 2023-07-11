@@ -6,7 +6,7 @@ module.exports = {
 
     mongoOptions    : { 
                         useNewUrlParser: true, 
-                        useUnifiedTopology: true 
+                        useUnifiedTopology: true
                       },
     mongoDB         : process.env.MongoNAME,
     filePathUpload  : (ENV === 'prod' ? process.env.uploadFilePath : process.env.uploadFilePathDev),

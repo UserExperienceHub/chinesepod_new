@@ -6,7 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="description" content="">
    <title>
-      <%= title %>
+      <%= results?.title %>
    </title>
    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,600,700">
@@ -180,7 +180,7 @@
                                  </div>
                                  <input placeholder="Search Lessons" type="text" class="form-control">
                                  <div class="d-none d-xl-flex input-group-append text-center" id="sprControls">
-                                    <div class="bg-<%= level %> text-center p-0">
+                                    <div class="bg-<%= data.level %> text-center p-0">
                                        <div class="custom-control custom-checkbox my-2">
                                           <input id="5206d211b2b29" type="checkbox" class="custom-control-input">
                                           <label for="5206d211b2b29" class="custom-control-label">
@@ -314,9 +314,9 @@
                <div class="row align-items-center py-4">
                   <div class="col-9 col-sm-9 col-lg-8">
                      <a href="/home" class="d-inline-block d-md-none mr-2"><i class="fas fa-home"></i></a>
-                     <a href="/courses/<%= course %>" class="d-inline-block d-md-none mx-2">Course Overview</a>
+                     <a href="/courses/<%= data.course %>" class="d-inline-block d-md-none mx-2">Course Overview</a>
                      <h1 class="h2 d-inline-block mb-0 mr-md-4">
-                        <%= title %>
+                        <%= results?.title %>
                      </h1>
                      <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links">
@@ -326,10 +326,10 @@
                               </a>
                            </li>
                            <li class="breadcrumb-item">
-                              <a href="/courses/<%= course %>" class="">Course Overview</a>
+                              <a href="/courses/<%= data.course %>" class="">Course Overview</a>
                            </li>
                            <li aria-current="page" class="breadcrumb-item active">
-                              <%= title %>
+                              <%= results?.title %>
                            </li>
                         </ol>
                      </nav>
@@ -395,8 +395,8 @@
                                                    <div id="video_player_wrapper" style="position:relative;">
                                                       <!--add video player html here-->
                                                       <video id="videoplyr-s3" playsinline crossorigin
-                                                         poster="<%= video.poster %>" style="width:100%">
-                                                         <source src="<%= video.link %>"
+                                                         poster="<%= data.video.poster %>" style="width:100%">
+                                                         <source src="<%= data.video.link %>"
                                                             type="application/vnd.apple.mpegURL">
                                                       </video>
                                                       <div
@@ -485,20 +485,20 @@
                                     </div>
                                     <div class="col-8">
                                        <div class="ml-auto">
-                                          <a href="/explore?search=&amp;<%= level %>=true" class="">
-                                             <span class="badge float-right badge-default badge-lg <%= level %>">
-                                                <%= level %>
+                                          <a href="/explore?search=&amp;<%= data.level %>=true" class="">
+                                             <span class="badge float-right badge-default badge-lg <%= data.level %>">
+                                                <%= data.level %>
                                              </span>
                                           </a>
-                                          <span class="badge float-right me-2 badge-default badge-lg <%= level %>">ID:
-                                             <%= lesson %>
+                                          <span class="badge float-right me-2 badge-default badge-lg <%= data.level %>">ID:
+                                             <%= data.id %>
                                           </span>
                                        </div>
                                     </div>
                                  </div>
                                  <div class="card-body mb-0">
                                     <span class="text-wrap">
-                                       <%=lessonDetails %>
+                                       <%= data.lessonDetails %>
                                     </span>
                                  </div>
                               </div>
@@ -513,31 +513,30 @@
                   <div class="">
                      <ul role="tablist" id="pills-tab"
                         class="nav nav-pills nav-pills-primary nav-fill flex-sm-row nav-wrapper">
-                        <% for(let key in supplementaryTabs) {%>
+                        <% for(let key in data.supplementaryTabs) {%>
                            <li role="presentation" class="nav-item mt-2 mx-1">
-                              <button class="nav-link <% if(key === " dialogue"){ %>active<%}%>" data-bs-toggle="pill"
-                                    data-bs-target="#pills-<%= key %>" type="button" role="tab" aria-controls="pills-<%=
-                                          key %>" aria-selected="true">
+                              <button class="nav-link <% if(key === "dialogue"){ %>active<%}%>" data-bs-toggle="pill"
+                                    data-bs-target="#pills-<%= key %>" type="button" role="tab" aria-controls="pills-<%= key %>" aria-selected="true">
                                           <div>
                                              <span>
                                                 <i class="far 
-									                     <% if(key === " dialogue"){ %>
+									                     <% if(key === "dialogue"){ %>
                                                    fa-comment-alt-dots
-                                                   <%} else if(key==="vocabulary" ){%>
+                                                   <%} else if(key === "vocabulary" ){%>
                                                       fa-clipboard-list
-                                                      <%} else if(key==="expansion" ){%>
+                                                      <%} else if(key === "expansion" ){%>
                                                          fa-external-link-alt
-                                                         <%} else if(key==="downloads" ){%>
+                                                         <%} else if(key === "downloads" ){%>
                                                             fa-cloud-download
-                                                            <%} else if(key==="exercises" ){%>
+                                                            <%} else if(key === "exercises" ){%>
                                                                fa-file-edit
-                                                               <%} else if(key==="comments" ){%>
+                                                               <%} else if(key === "comments" ){%>
                                                                   fa-comment
                                                                   <%}%>
                                                                      ">
                                                 </i>
                                                 <span class="d-none d-md-block">
-                                                   <%= key %>
+                                                   <%= key.charAt(0).toUpperCase() + key.slice(1); %>
                                                 </span>
                                              </span>
                                           </div>
@@ -547,8 +546,8 @@
                      </ul>
                   </div>
                   <div id="pills-tabContent" class="tab-content tab-space card shadow">
-                     <% for(let key in supplementaryTabs) {%>
-                        <div class="tab-pane fade <% if(key === " dialogue"){ %>show active<%}%>" id="pills-<%= key %>"
+                     <% for(let key in data.supplementaryTabs) {%>
+                        <div class="tab-pane fade <% if(key === "dialogue"){ %>show active<%}%>" id="pills-<%= key %>"
                                  role="tabpanel"aria-labelledby="pills-<%= key %>-tab">
                                     <div class="card-body <%= key %>">
                                        <div>
@@ -569,24 +568,29 @@
                                              </div>
                                              <% } %>
                                                 <% if (key==="dialogue" ) { %>
-                                                   <% for (var i=0; i < supplementaryTabs[key].length; i++) { %>
+                                                   <% for (var i=0; i < results.dialogues.length; i++) { %>
                                                       <div class="pt-2">
                                                          <div class="col-lg-8 offset-lg-2">
                                                             <div class="card card-pricing bg-lighter border-0 mb-4">
                                                                <div class="card-header bg-transparent">
                                                                   <div class="row align-items-center">
                                                                      <div class="col-10 col-sm-11">
-                                                                        <span
-                                                                           onclick="tip(this,'don\'t tell me ...','nan2dao4','难道')"
-                                                                           class="transcript align-middle el- characters">
-                                                                           <%= supplementaryTabs[key][i].traditional %>
-                                                                        </span>
-                                                                        <span class="characters">。</span>
+                                                                        <% var item = results.dialogues[i].sentence; %>
+                                                                        <p class=" characters">
+                                                                           <% for (var j=0; j < item.length; j++) { %>
+                                                                              <span
+                                                                                 onclick="tip(this,'<%= item[j].english %>','<%= item[j].pinyin%>','<%= item[j].traditional %>')"
+                                                                                 class="transcript align-middle"
+                                                                                 tabindex="0">
+                                                                                 <%= item[j].traditional%>
+                                                                              </span>
+                                                                           <% } %>
+                                                                        </p>
                                                                      </div>
                                                                      <div class="col-2 col-sm-1 text-right">
                                                                         <button type="button"
                                                                            onclick="toggleTranslatePlay(this)"
-                                                                           play-info="00001<%= i %>"
+                                                                           play-info="0000<%= i+1 %>0"
                                                                            class="btn float-right btn-icon-only m-0 mb-1 btn-secondary"><i
                                                                               class="fas fa-volume-up"></i></button>
                                                                         <button type="button"
@@ -595,12 +599,12 @@
                                                                            class="btn float-right btn-icon-only btn-secondary"><i
                                                                               class="fas fa-plus"></i></button>
                                                                      </div>
-                                                                     <div id="play_wrapper_00001<%= i %>"
+                                                                     <div id="play_wrapper_0000<%= i+1 %>0"
                                                                         class="col-12 pt-1 d-none">
                                                                         <audio class="js-player" crossorigin
                                                                            playsinline>
                                                                            <source
-                                                                              src="<%= supplementaryTabs[key][i].audio %>"
+                                                                              src="<%= results.dialogues[i].audio %>"
                                                                               type="audio/mp3">
                                                                         </audio>
                                                                      </div>
@@ -613,7 +617,7 @@
                                                                            style="display: none;">
                                                                            <span
                                                                               class="transcript align-middle el- pinyin">
-                                                                              <%= supplementaryTabs[key][i].pinyin%>
+                                                                              <%= results.dialogues[i].pinyin%>
                                                                            </span>
                                                                            <span class="pinyin">。</span>
                                                                         </p>
@@ -631,7 +635,7 @@
                                                                      <div class="col-10 col-sm-11">
                                                                         <p class="english" id="voc_<%= i+1 %>_1"
                                                                            style="display: none;">
-                                                                           <%= supplementaryTabs[key][i].english %>
+                                                                           <%= results.dialogues[i].english %>
                                                                         </p>
                                                                      </div>
                                                                      <div class="col-2 col-sm-1">
@@ -702,29 +706,27 @@
                                                                      </tr>
                                                                   </thead>
                                                                   <tbody class="">
-                                                                     <% for (var i=0; i < supplementaryTabs[key].length;
+                                                                     <% for (var i=0; i < results.vocabularies.length;
                                                                         i++) { %>
                                                                         <tr>
                                                                            <td
                                                                               class="text-center align-middle vocabulary px-1 px-lg-5">
                                                                               <div
-                                                                                 aria-label="<%= supplementaryTabs[key][i].traditional %>">
-                                                                                 <% for (var j=0; j <
-                                                                                    supplementaryTabs[key][i].traditional.length;
+                                                                                 aria-label="<%= results.vocabularies[i].traditional %>">
+                                                                                 <% for (var j=0; j < 
+                                                                                 results.vocabularies[i].traditional.length;
                                                                                     j++) { %>
-                                                                                    <span
-                                                                                       id="<%= i %>-<%= j %>-<%= supplementaryTabs[key][i].traditional[j] %>"
-                                                                                       class="cp-char characters"></span>
+                                                                                    <span id="<%= i %>-<%= j %>-<%= results.vocabularies[i].traditional[j] %>" class="cp-char characters"></span>
                                                                                     <% } %>
                                                                               </div>
                                                                            </td>
                                                                            <td
                                                                               class="text-center align-middle vocabulary px-1 px-lg-5 pinyin">
-                                                                              <%= supplementaryTabs[key][i].pinyin %>
+                                                                              <%= results.vocabularies[i].pinyin %>
                                                                            </td>
                                                                            <td
                                                                               class="text-center align-middle vocabulary px-1 px-lg-5 english">
-                                                                              <%= supplementaryTabs[key][i].english %>
+                                                                              <%= results.vocabularies[i].english %>
                                                                            </td>
                                                                            <td class="px-0 align-middle">
                                                                               <div
@@ -733,7 +735,7 @@
                                                                                     class="col-12 col-md-3 col-auto mb-1">
                                                                                     <button type="button"
                                                                                        data-type="mp3"
-                                                                                       data-src="<%= supplementaryTabs[key][i].audio %>"
+                                                                                       data-src="<%= results.vocabularies[i].audio %>"
                                                                                        class="btn btn-icon-only ml-1 btn-secondary btn-sm player-src">
                                                                                        <i class="fas fa-volume-up"></i>
                                                                                     </button>
@@ -741,7 +743,7 @@
                                                                                  <div
                                                                                     class="col-12  col-md-3 col-auto mb-1">
                                                                                     <button type="button"
-                                                                                       onclick="copyVocabOnCB('<%= supplementaryTabs[key][i].traditional %>','lǎoniánchīdāizhèng','senile dementia')"
+                                                                                       onclick="copyVocabOnCB('<%= results.vocabularies[i].traditional %>','lǎoniánchīdāizhèng','senile dementia')"
                                                                                        class="btn btn-icon-only ml-1 btn-secondary btn-sm">
                                                                                        <i class="far fa-copy"></i>
                                                                                     </button>
@@ -749,7 +751,7 @@
                                                                                  <div
                                                                                     class="col-12  col-md-3 col-auto mb-1">
                                                                                     <button type="button"
-                                                                                       onclick="addToVocabulary(this, '<%= supplementaryTabs[key][i].traditional %>')"
+                                                                                       onclick="addToVocabulary(this, '<%= results.vocabularies[i].traditional %>')"
                                                                                        vocab-added="false"
                                                                                        class="btn btn-icon-only ml-1 btn-icon btn-fab btn-secondary btn-sm">
                                                                                        <i class="fa fa-plus"></i>
@@ -763,97 +765,90 @@
                                                                </table>
                                                             </div>
                                                             <% } else if (key==="expansion" ) { %>
-                                                               <% for (var i=0; i < supplementaryTabs[key].length; i++)
-                                                                  { %>
+                                                               <% for (var i=0; i < results.expansions.length; i++) { %>
                                                                   <div class="pt-2">
                                                                      <div class="offset-lg-2 col-lg-8 pb-4">
                                                                         <h3 class="h3 example ml-2">
-                                                                           <%= supplementaryTabs[key][i].word %>
+                                                                           <%= results.expansions[i].phrase %>
                                                                         </h3>
-                                                                        <div
-                                                                           class="card card-pricing bg-lighter border-0 mb-4">
-                                                                           <div class="card-header bg-transparent">
-                                                                              <div class="row align-items-center">
-                                                                                 <div class="col-10 col-sm-11">
-                                                                                    <% var
-                                                                                       item=supplementaryTabs[key][i].traditional.split(" ");
-                                                                                 %>
-                                                                                 <p class=" characters">
-                                                                                       <% for (var j=0; j < item.length;
-                                                                                          j++) { %>
-                                                                                          <span
-                                                                                             onclick="tip(this,'to leave; to part from; to be away from','lí','<%= item[j] %>')"
-                                                                                             class="transcript align-middle"
-                                                                                             tabindex="0">
-                                                                                             <%= item[j] %>
-                                                                                          </span>
+                                                                        <% for (var k=0; k < results.expansions[i].examples.length; k++) { %>
+                                                                           <div class="card card-pricing bg-lighter border-0 mb-4">
+                                                                              <div class="card-header bg-transparent">
+                                                                                 <div class="row align-items-center">
+                                                                                    <div class="col-10 col-sm-11">
+                                                                                       <% var item = results.expansions[i].examples[k].sentence; %>
+                                                                                       <p class=" characters">
+                                                                                          <% for (var j=0; j < item.length; j++) { %>
+                                                                                             <span
+                                                                                                onclick="tip(this,'<%= item[j].english %>','<%= item[j].pinyin%>','<%= item[j].traditional %>')"
+                                                                                                class="transcript align-middle"
+                                                                                                tabindex="0">
+                                                                                                <%= item[j].traditional%>
+                                                                                             </span>
                                                                                           <% } %>
-                                                                                             </p>
+                                                                                       </p>
+                                                                                    </div>
+                                                                                    <div class="col-2 col-sm-1 text-right">
+                                                                                       <button type="button"
+                                                                                          onclick="toggleTranslatePlay(this)"
+                                                                                          play-info="0000<%= k %>3"
+                                                                                          class="btn float-right btn-icon-only m-0 mb-1 btn-secondary"><i
+                                                                                             class="fas fa-volume-up"></i></button>
+                                                                                       <button type="button"
+                                                                                          onclick="addToVocabulary(this, '離鄉多年了，但家鄉的風景依然歷歷在目。')"
+                                                                                          vocab-added="false"
+                                                                                          class="btn float-right btn-icon-only btn-secondary"><i
+                                                                                             class="fas fa-plus"></i></button>
+                                                                                    </div>
+                                                                                    <div id="play_wrapper_0000<%= k %>3"
+                                                                                       class="col-12 pt-1 d-none">
+                                                                                       <audio class="js-player" crossorigin
+                                                                                          playsinline>
+                                                                                          <source src="<%= results.expansions[i].examples[k].audio %>" type="audio/mp3">
+                                                                                       </audio>
+                                                                                    </div>
                                                                                  </div>
-                                                                                 <div class="col-2 col-sm-1 text-right">
-                                                                                    <button type="button"
-                                                                                       onclick="toggleTranslatePlay(this)"
-                                                                                       play-info="0000<%= i %>3"
-                                                                                       class="btn float-right btn-icon-only m-0 mb-1 btn-secondary"><i
-                                                                                          class="fas fa-volume-up"></i></button>
-                                                                                    <button type="button"
-                                                                                       onclick="addToVocabulary(this, '離鄉多年了，但家鄉的風景依然歷歷在目。')"
-                                                                                       vocab-added="false"
-                                                                                       class="btn float-right btn-icon-only btn-secondary"><i
-                                                                                          class="fas fa-plus"></i></button>
+                                                                              </div>
+                                                                              <div class="card-body">
+                                                                                 <div class="row align-items-center">
+                                                                                    <div class="col-10 col-sm-11">
+                                                                                       <p class="pinyin" id="exp_<%= k %>_1"
+                                                                                          style="display: none;">
+                                                                                          <span
+                                                                                             class="transcript align-middle el-"
+                                                                                             tabindex="0">
+                                                                                             <%= results.expansions[i].examples[k].pinyin %>
+                                                                                          </span>
+                                                                                       </p>
+                                                                                    </div>
+                                                                                    <div class="col-2 col-sm-1">
+                                                                                       <button type="button"
+                                                                                          id="btn_exp_<%= k %>_1"
+                                                                                          onclick="toggleDisplayAssistance('exp_<%= k %>_1', 'btn_exp_<%= k %>_1')"
+                                                                                          class="btn float-right btn-icon-only btn-secondary"><i
+                                                                                             class="fas fa-eye"></i></button>
+                                                                                    </div>
                                                                                  </div>
-                                                                                 <div id="play_wrapper_0000<%= i %>3"
-                                                                                    class="col-12 pt-1 d-none">
-                                                                                    <audio class="js-player" crossorigin
-                                                                                       playsinline>
-                                                                                       <source
-                                                                                          src="<%= supplementaryTabs[key][i].audio %>"
-                                                                                          type="audio/mp3">
-                                                                                    </audio>
+                                                                              </div>
+                                                                              <div class="card-footer bg-transparent">
+                                                                                 <div class="row align-items-center">
+                                                                                    <div class="col-10 col-sm-11">
+                                                                                       <p class="english" id="exp_<%= k %>_0"
+                                                                                          style="display: none;">
+                                                                                          <%= results.expansions[i].examples[k].english %>
+                                                                                       </p>
+                                                                                    </div>
+                                                                                    <div class="col-2 col-sm-1">
+                                                                                       <button type="button"
+                                                                                          id="btn_exp_<%= k %>_0"
+                                                                                          onclick="toggleDisplayAssistance('exp_<%= k %>_0', 'btn_exp_<%= k %>_0')"
+                                                                                          class="btn float-right btn-icon-only btn-secondary"><i
+                                                                                             class="fas fa-eye"></i></button>
+                                                                                    </div>
                                                                                  </div>
                                                                               </div>
                                                                            </div>
-                                                                           <div class="card-body">
-                                                                              <div class="row align-items-center">
-                                                                                 <div class="col-10 col-sm-11">
-                                                                                    <p class="pinyin" id="exp_1_0"
-                                                                                       style="display: none;">
-                                                                                       <span
-                                                                                          class="transcript align-middle el-"
-                                                                                          tabindex="0">
-                                                                                          <%= supplementaryTabs[key][i].pinyin
-                                                                                             %>
-                                                                                       </span>
-                                                                                    </p>
-                                                                                 </div>
-                                                                                 <div class="col-2 col-sm-1">
-                                                                                    <button type="button"
-                                                                                       id="btn_exp_1_0"
-                                                                                       onclick="toggleDisplayAssistance('exp_1_0', 'btn_exp_1_0')"
-                                                                                       class="btn float-right btn-icon-only btn-secondary"><i
-                                                                                          class="fas fa-eye"></i></button>
-                                                                                 </div>
-                                                                              </div>
-                                                                           </div>
-                                                                           <div class="card-footer bg-transparent">
-                                                                              <div class="row align-items-center">
-                                                                                 <div class="col-10 col-sm-11">
-                                                                                    <p class="english" id="exp_1_1"
-                                                                                       style="display: none;">
-                                                                                       <%= supplementaryTabs[key][i].english
-                                                                                          %>
-                                                                                    </p>
-                                                                                 </div>
-                                                                                 <div class="col-2 col-sm-1">
-                                                                                    <button type="button"
-                                                                                       id="btn_exp_1_1"
-                                                                                       onclick="toggleDisplayAssistance('exp_1_1', 'btn_exp_1_1')"
-                                                                                       class="btn float-right btn-icon-only btn-secondary"><i
-                                                                                          class="fas fa-eye"></i></button>
-                                                                                 </div>
-                                                                              </div>
-                                                                           </div>
-                                                                        </div>
+                                                                        <% } %>
                                                                      </div>
                                                                   </div>
                                                                   <% } %>
@@ -975,90 +970,78 @@
                                                                               </div>
                                                                               <div class="exercise-view">
                                                                                  <div class="exercise-container">
-                                                                                    <% for (var i=0; i <
-                                                                                       supplementaryTabs[key].length;
-                                                                                       i++) { %>
-                                                                                       <% if
-                                                                                          (supplementaryTabs[key][i].type===1)
-                                                                                          { %>
-                                                                                          <div
-                                                                                             class="exercise-block <% if(i > 0) { %>d-none<% } %>"
-                                                                                             exercise_active="<% if(i > 0) { %>false<% } else { %>true<% } %>"
-                                                                                             id="exercise_00<%= i+1 %>">
-                                                                                             <div class="col-12">
-                                                                                                <header>
-                                                                                                   <h1 class="title">
-                                                                                                      Choose
-                                                                                                      the right option
-                                                                                                   </h1>
-                                                                                                   <div class="scores">
-                                                                                                      <div
-                                                                                                         class="score-block">
-                                                                                                         <span
-                                                                                                            class="score">1</span><span
-                                                                                                            class="points">
-                                                                                                            point
-                                                                                                         </span>
-                                                                                                      </div>
-                                                                                                   </div>
-                                                                                                </header>
-                                                                                             </div>
+                                                                                    <% for (let elem in results.questions) { %>
+                                                                                       <% if (elem === "choice") { %>
+                                                                                          <% for (let i=0; i < results.questions[elem].length; i++) { %>
                                                                                              <div
-                                                                                                class="sentence-to-fill">
-                                                                                                <div class="chinese">
-                                                                                                   <%= supplementaryTabs[key][i].traditional
-                                                                                                      %>
-                                                                                                </div>
-                                                                                                <div class="pinyin">
-                                                                                                   <%= supplementaryTabs[key][i].pinyin
-                                                                                                      %>
-                                                                                                </div>
-                                                                                             </div>
-                                                                                             <div class="answers">
-                                                                                                <% for (var j=0; j <
-                                                                                                   supplementaryTabs[key][i].answers.length;
-                                                                                                   j++) { %>
-                                                                                                   <div
-                                                                                                      class="col-12 col-sm-6">
-                                                                                                      <button
-                                                                                                         type="button"
-                                                                                                         class="btn btn-light btn-block mb-2 mcqs"
-                                                                                                         val="<%= supplementaryTabs[key][i].answers[j].traditional %>"
-                                                                                                         correct="<%= supplementaryTabs[key][i].correct %>">
+                                                                                                class="exercise-block <% if(i > 0) { %>d-none<% } %>"
+                                                                                                exercise_active="<% if(i > 0) { %>false<% } else { %>true<% } %>"
+                                                                                                id="exercise_00<%= i+1 %>">
+                                                                                                <div class="col-12">
+                                                                                                   <header>
+                                                                                                      <h1 class="title">
+                                                                                                         Choose
+                                                                                                         the right option
+                                                                                                      </h1>
+                                                                                                      <div class="scores">
                                                                                                          <div
-                                                                                                            class="row">
-                                                                                                            <div
-                                                                                                               class="col-12 characters">
-                                                                                                               <%= supplementaryTabs[key][i].answers[j].traditional %>
-                                                                                                            </div>
-                                                                                                            <div
-                                                                                                               class="col-12 pinyin text-white">
-                                                                                                               <%= supplementaryTabs[key][i].answers[j].pinyin %>
-                                                                                                            </div>
+                                                                                                            class="score-block">
+                                                                                                            <span
+                                                                                                               class="score">1</span><span
+                                                                                                               class="points">
+                                                                                                               point
+                                                                                                            </span>
                                                                                                          </div>
-                                                                                                      </button>
+                                                                                                      </div>
+                                                                                                   </header>
+                                                                                                </div>
+                                                                                                <div
+                                                                                                   class="sentence-to-fill">
+                                                                                                   <div class="chinese">
+                                                                                                      <%= results.questions[elem][i].question.traditional
+                                                                                                         %>
                                                                                                    </div>
-                                                                                                   <% } %>
-                                                                                                      <script>
-                                                                                                         var marks = 0;
-                                                                                                         var mcqs = document.querySelectorAll('.mcqs')
-                                                                                                         mcqs.forEach(mcq => {
-                                                                                                            mcq.addEventListener('click', function(e) {
-                                                                                                               console.log(mcq.getAttribute('val'))
-                                                                                                               console.log(mcq.getAttribute('correct'))
-                                                                                                               if (mcq.getAttribute('val') == mcq.getAttribute('correct')) {
+                                                                                                   <div class="pinyin">
+                                                                                                      <%= results.questions[elem][i].question.pinyin
+                                                                                                         %>
+                                                                                                   </div>
+                                                                                                </div>
+                                                                                                <div class="answers">
+                                                                                                   <% for (var j=0; j < results.questions[elem][i].question.choices.length; j++) { %>
+                                                                                                      <div class="col-12 col-sm-6">
+                                                                                                         <button
+                                                                                                            type="button"
+                                                                                                            class="btn btn-light btn-block mb-2"
+                                                                                                            onclick="mcqCheck('<%= results.questions[elem][i].question.choices[j].id %>', '<%= results.questions[elem][i].answer.id %>')"
+                                                                                                         >
+                                                                                                            <div
+                                                                                                               class="row">
+                                                                                                               <div class="col-12 characters">
+                                                                                                                  <%= results.questions[elem][i].question.choices[j].traditional %>
+                                                                                                               </div>
+                                                                                                               <div
+                                                                                                                  class="col-12 pinyin text-white">
+                                                                                                                  <%= results.questions[elem][i].question.choices[j].pinyin %>
+                                                                                                               </div>
+                                                                                                            </div>
+                                                                                                         </button>
+                                                                                                      </div>
+                                                                                                      <% } %>
+                                                                                                         <script>
+                                                                                                            var marks = 0;
+                                                                                                            function mcqCheck(val, correct) {
+                                                                                                               if (val == correct) {
                                                                                                                   marks++
                                                                                                                }
                                                                                                                console.log(marks)
                                                                                                                callNextExercise()
-                                                                                                            })
-                                                                                                         })
-                                                                                                      </script>
+                                                                                                            }
+                                                                                                            
+                                                                                                         </script>
+                                                                                                </div>
                                                                                              </div>
-                                                                                          </div>
-                                                                                          <% } else if
-                                                                                             (supplementaryTabs[key][i].type===2)
-                                                                                             { %>
+                                                                                          <% } %>
+                                                                                          <% } else if (key === "matching") { %>
                                                                                              <div
                                                                                                 class="exercise-block d-none"
                                                                                                 exercise_active="flase"
@@ -1086,23 +1069,20 @@
                                                                                                    class="parts">
                                                                                                    <div
                                                                                                       class="parts-left col-6">
-                                                                                                      <% supplementaryTabs[key][i].chinese.forEach((elem,
-                                                                                                         index)=> { %>
+                                                                                                      <% results.questions[elem].question.segments.forEach((elem, index)=> { %>
                                                                                                          <button
                                                                                                             type="button"
                                                                                                             class="btn btn-light btn-block mb-2"
-                                                                                                            data-tag="<%= elem.tag %>">
+                                                                                                            data-tag="<%= elem.id %>">
                                                                                                             <div
                                                                                                                class="row">
                                                                                                                <div
                                                                                                                   class="col-12 characters">
-                                                                                                                  <%= elem.traditional
-                                                                                                                     %>
+                                                                                                                  <%= elem.traditional %>
                                                                                                                </div>
                                                                                                                <div
                                                                                                                   class="col-12 pinyin text-white">
-                                                                                                                  <%=
-                                                                                                                     elem.pinyin%>
+                                                                                                                  <%= elem.pinyin %>
                                                                                                                </div>
                                                                                                             </div>
                                                                                                          </button>
@@ -1110,18 +1090,17 @@
                                                                                                    </div>
                                                                                                    <div
                                                                                                       class="parts-right col-6">
-                                                                                                      <% supplementaryTabs[key][i].english.forEach((elem,
+                                                                                                      <% results.questions[elem].question.segments.forEach((elem,
                                                                                                          index)=> { %>
                                                                                                          <button
                                                                                                             type="button"
                                                                                                             class="btn btn-light btn-block mb-2"
-                                                                                                            data-tag="<%= elem.tag %>">
+                                                                                                            data-tag="<%= elem.id %>">
                                                                                                             <div
                                                                                                                class="row">
                                                                                                                <div
                                                                                                                   class="col-12 english text-white">
-                                                                                                                  <%= elem.text
-                                                                                                                     %>
+                                                                                                                  <%= elem.english %>
                                                                                                                </div>
                                                                                                             </div>
                                                                                                          </button>
@@ -1130,7 +1109,7 @@
                                                                                                 </div>
                                                                                              </div>
                                                                                              <% } else if
-                                                                                                (supplementaryTabs[key][i].type===3)
+                                                                                                (data.supplementaryTabs[key][i].type===3)
                                                                                                 { %>
                                                                                                 <div
                                                                                                    class="exercise-block d-none"
@@ -1157,7 +1136,7 @@
                                                                                                    </div>
                                                                                                    <div
                                                                                                       class="draggable-sentences">
-                                                                                                      <% supplementaryTabs[key][i].answers.forEach((elem,
+                                                                                                      <% data.supplementaryTabs[key][i].answers.forEach((elem,
                                                                                                          index)=> { %>
                                                                                                          <div
                                                                                                             class="card bg-gradient-lighter">
@@ -1212,7 +1191,7 @@
                                                                                                    </div>
                                                                                                 </div>
                                                                                                 <% } else if
-                                                                                                   (supplementaryTabs[key][i].type===4)
+                                                                                                   (data.supplementaryTabs[key][i].type===4)
                                                                                                    { %>
                                                                                                    <div
                                                                                                       class="exercise-block d-none"
@@ -1518,37 +1497,30 @@
                                                                                        Leave Comment
                                                                                     </button>
                                                                                  </div>
-                                                                                 <% for (var i=0; i <
-                                                                                    supplementaryTabs[key].length; i++)
-                                                                                    { %>
+                                                                                 <% for (var i=0; i < results.comments.comments.length; i++) { %>
                                                                                     <div>
                                                                                        <div
                                                                                           class="media-comment col-12 ">
                                                                                           <div>
                                                                                              <img alt="Profile picture"
                                                                                                 class="avatar avatar-lg media-comment-avatar rounded-circle bg-light"
-                                                                                                src="<%= supplementaryTabs[key][i].img %>">
+                                                                                                src="<%= results.comments.comments[i].avatarUrl || "https://www.chinesepod.com/dash/img/brand/symbol-black-center.svg" %>">
                                                                                           </div>
                                                                                           <div
                                                                                              class="media-body col-12">
                                                                                              <div
                                                                                                 class="media-comment-text">
                                                                                                 <h6 class="h5 mt-0">
-                                                                                                   <%= supplementaryTabs[key][i].name
-                                                                                                      %>
+                                                                                                   <%= results.comments.comments[i].username %>
                                                                                                 </h6>
                                                                                                 <small
                                                                                                    class="text-muted">
-                                                                                                   <%= supplementaryTabs[key][i].date
-                                                                                                      %> at <%=
-                                                                                                         supplementaryTabs[key][i].time
-                                                                                                         %>
+                                                                                                   <%= results.comments.comments[i].createdAt %>
                                                                                                 </small>
                                                                                                 <p
                                                                                                    class="text-sm lh-160 comment-item">
                                                                                                 <p>
-                                                                                                   <%= supplementaryTabs[key][i].message
-                                                                                                      %>
+                                                                                                   <%- results.comments.comments[i].content %>
                                                                                                 </p>
                                                                                                 </p>
                                                                                                 <div
@@ -1825,9 +1797,6 @@
 
          // token 
          // www.chinesepod cookies | copy the cookies from www.chinesepod.com or you can fetch it dynamically
-         let token;
-         let currentUserId;
-         let browserCookies;
 
          // fetch API function
          let fetchApi = async (url, token) => {
@@ -1899,16 +1868,13 @@
          document.querySelector('body').classList.toggle('g-sidenav-show');
          document.querySelector('body').classList.toggle('g-sidenav-pinned');
       });
-      document.querySelector('.sidenav-toggler').addEventListener('mouseover', function () {
-         console.log('nav toggle clicked');
-         document.querySelector('body').classList.toggle('g-sidenav-show');
-      });
+      document.querySelector('.sidenav-toggler')
 
       const player = new Plyr('audio', {});
       const players = Plyr.setup('.js-player');
 
       //check video source from API and render that source in respective video player
-      var videoSource = '<%- video.source %>';
+      var videoSource = '<%- video?.src %>';
       console.log(videoSource);
       var videoURL;
       if (videoSource === "youtube") {
@@ -2209,6 +2175,7 @@
       function callNextExercise() {
          if (document.getElementById("btn_next_exercise").getAttribute("test_pahse") === 'true') {
             const current_exercise = document.querySelector('[exercise_active="true"]');
+            console.log(current_exercise.id.split('_')[0] + '_' + (Number(current_exercise.id.split('_')[1]) + 1).toString().padStart(3, "0"))
             document.getElementById(current_exercise.id).classList.add("d-none");
             document.getElementById(current_exercise.id).setAttribute("exercise_active", "flase");
             if (document.querySelectorAll("[exercise_active]").length < Number(current_exercise.id.split('_')[1]) + 1) {
