@@ -970,13 +970,14 @@
                                                                               </div>
                                                                               <div class="exercise-view">
                                                                                  <div class="exercise-container">
-                                                                                    <% for (let elem in results.questions) { %>
-                                                                                       <% if (elem === "choice") { %>
-                                                                                          <% for (let i=0; i < results.questions[elem].length; i++) { %>
+                                                                                    <% var num = 0 %>
+                                                                                       <% if (results.questions['choice']) { %>
+                                                                                          <% for (let i=0; i < results.questions['choice'].length; i++) { %>
                                                                                              <div
-                                                                                                class="exercise-block <% if(i > 0) { %>d-none<% } %>"
-                                                                                                exercise_active="<% if(i > 0) { %>false<% } else { %>true<% } %>"
-                                                                                                id="exercise_00<%= i+1 %>">
+                                                                                                class="exercise-block <% if(num > 0) { %>d-none<% } %>"
+                                                                                                exercise_active="<% if(num > 0) { %>false<% } else { %>true<% } %>"
+                                                                                                id="exercise_00<%= num+1 %>">
+                                                                                                <% num++ %>
                                                                                                 <div class="col-12">
                                                                                                    <header>
                                                                                                       <h1 class="title">
@@ -998,30 +999,30 @@
                                                                                                 <div
                                                                                                    class="sentence-to-fill">
                                                                                                    <div class="chinese">
-                                                                                                      <%= results.questions[elem][i].question.traditional
+                                                                                                      <%= results.questions["choice"][i].question.traditional
                                                                                                          %>
                                                                                                    </div>
                                                                                                    <div class="pinyin">
-                                                                                                      <%= results.questions[elem][i].question.pinyin
+                                                                                                      <%= results.questions["choice"][i].question.pinyin
                                                                                                          %>
                                                                                                    </div>
                                                                                                 </div>
                                                                                                 <div class="answers">
-                                                                                                   <% for (var j=0; j < results.questions[elem][i].question.choices.length; j++) { %>
+                                                                                                   <% for (var j=0; j < results.questions["choice"][i].question.choices.length; j++) { %>
                                                                                                       <div class="col-12 col-sm-6">
                                                                                                          <button
                                                                                                             type="button"
                                                                                                             class="btn btn-light btn-block mb-2"
-                                                                                                            onclick="mcqCheck('<%= results.questions[elem][i].question.choices[j].id %>', '<%= results.questions[elem][i].answer.id %>')"
+                                                                                                            onclick="mcqCheck('<%= results.questions[`choice`][i].question.choices[j].id %>', '<%= results.questions[`choice`][i].answer.id %>')"
                                                                                                          >
                                                                                                             <div
                                                                                                                class="row">
                                                                                                                <div class="col-12 characters">
-                                                                                                                  <%= results.questions[elem][i].question.choices[j].traditional %>
+                                                                                                                  <%= results.questions['choice'][i].question.choices[j].traditional %>
                                                                                                                </div>
                                                                                                                <div
                                                                                                                   class="col-12 pinyin text-white">
-                                                                                                                  <%= results.questions[elem][i].question.choices[j].pinyin %>
+                                                                                                                  <%= results.questions['choice'][i].question.choices[j].pinyin %>
                                                                                                                </div>
                                                                                                             </div>
                                                                                                          </button>
@@ -1041,12 +1042,14 @@
                                                                                                 </div>
                                                                                              </div>
                                                                                           <% } %>
-                                                                                          <% } else if (key === "matching") { %>
+                                                                                       <% } if (results.questions['matching']) { %>
+                                                                                          <% for (let i=0; i < results.questions['matching'].length; i++) { %>
                                                                                              <div
                                                                                                 class="exercise-block d-none"
                                                                                                 exercise_active="flase"
-                                                                                                id="exercise_00<%= i+1 %>">
+                                                                                                id="exercise_00<%= num+1 %>">
                                                                                                 <div class="col-12">
+                                                                                                <% num++ %>
                                                                                                    <header>
                                                                                                       <h1 class="title">
                                                                                                          Match the
@@ -1069,7 +1072,7 @@
                                                                                                    class="parts">
                                                                                                    <div
                                                                                                       class="parts-left col-6">
-                                                                                                      <% results.questions[elem].question.segments.forEach((elem, index)=> { %>
+                                                                                                      <% results.questions['matching'][i].question.segments.forEach((elem, index)=> { %>
                                                                                                          <button
                                                                                                             type="button"
                                                                                                             class="btn btn-light btn-block mb-2"
@@ -1090,8 +1093,7 @@
                                                                                                    </div>
                                                                                                    <div
                                                                                                       class="parts-right col-6">
-                                                                                                      <% results.questions[elem].question.segments.forEach((elem,
-                                                                                                         index)=> { %>
+                                                                                                      <% results.questions['matching'][i].question.segments.forEach((elem, index)=> { %>
                                                                                                          <button
                                                                                                             type="button"
                                                                                                             class="btn btn-light btn-block mb-2"
@@ -1104,17 +1106,18 @@
                                                                                                                </div>
                                                                                                             </div>
                                                                                                          </button>
-                                                                                                         <% }) %>
+                                                                                                      <% }) %>
                                                                                                    </div>
                                                                                                 </div>
                                                                                              </div>
-                                                                                             <% } else if
-                                                                                                (data.supplementaryTabs[key][i].type===3)
-                                                                                                { %>
+                                                                                          <% } %>
+                                                                                       <% } if (results.questions['rearrange']) { %>
+                                                                                          <% for (let i=0; i < results.questions['rearrange'].length; i++) { %>
                                                                                                 <div
                                                                                                    class="exercise-block d-none"
                                                                                                    exercise_active="flase"
-                                                                                                   id="exercise_00<%= i+1 %>">
+                                                                                                   id="exercise_00<%= num+1 %>">
+                                                                                                   <% num++ %>
                                                                                                    <div class="col-12">
                                                                                                       <header>
                                                                                                          <h1
@@ -1136,8 +1139,7 @@
                                                                                                    </div>
                                                                                                    <div
                                                                                                       class="draggable-sentences">
-                                                                                                      <% data.supplementaryTabs[key][i].answers.forEach((elem,
-                                                                                                         index)=> { %>
+                                                                                                      <% results.questions['rearrange'][i].question.segments.forEach((elem, index)=> { %>
                                                                                                          <div
                                                                                                             class="card bg-gradient-lighter">
                                                                                                             <div
@@ -1145,28 +1147,8 @@
                                                                                                                <div
                                                                                                                   class="col-10 col-sm-11">
                                                                                                                   <span
-                                                                                                                     class="characters">當你看著屏幕中一個個腥羴色，暴力的鏡頭，這些啊，其實都會進入你的潛意識。</span>
-                                                                                                                  <footer
-                                                                                                                     class="pinyin">
-                                                                                                                     dāng
-                                                                                                                     nǐ
-                                                                                                                     kàn
-                                                                                                                     zhe
-                                                                                                                     píngmù
-                                                                                                                     zhōng
-                                                                                                                     yīgègè
-                                                                                                                     xīng
-                                                                                                                     shān
-                                                                                                                     sè,bàolì
-                                                                                                                     de
-                                                                                                                     jìngtóu,zhèxiē
-                                                                                                                     a,qíshí
-                                                                                                                     dōu
-                                                                                                                     huì
-                                                                                                                     jìnrù
-                                                                                                                     nǐ
-                                                                                                                     de
-                                                                                                                     qiányìshí.
+                                                                                                                     class="characters"><%= elem.traditional %>
+                                                                                                                     <%= elem.pinyin %>
                                                                                                                   </footer>
                                                                                                                </div>
                                                                                                                <div
@@ -1177,8 +1159,7 @@
                                                                                                                         class="col-12">
                                                                                                                         <button
                                                                                                                            type="button"
-                                                                                                                           class="btn btn-icon-only mb-2 btn-secondary btn-lg"
-                                                                                                                           style="display: none;">
+                                                                                                                           class="btn btn-icon-only mb-2 btn-secondary btn-lg">
                                                                                                                            <i
                                                                                                                               class="text-lg fa fa-chevron-up"></i>
                                                                                                                         </button>
@@ -1190,6 +1171,7 @@
                                                                                                          <% }) %>
                                                                                                    </div>
                                                                                                 </div>
+                                                                                                <% } %>
                                                                                                 <% } else if
                                                                                                    (data.supplementaryTabs[key][i].type===4)
                                                                                                    { %>
@@ -1270,7 +1252,6 @@
                                                                                                          ni3hao3</p>
                                                                                                    </div>
                                                                                                    <% } %>
-                                                                                                      <% } %>
                                                                                                          <div
                                                                                                             class="exercise-block d-none"
                                                                                                             exercise_active="flase"
@@ -2172,10 +2153,9 @@
 
       //bottom player
       //Multistep excercise
-      function callNextExercise() {
+      function callNextExercise() { 
          if (document.getElementById("btn_next_exercise").getAttribute("test_pahse") === 'true') {
             const current_exercise = document.querySelector('[exercise_active="true"]');
-            console.log(current_exercise.id.split('_')[0] + '_' + (Number(current_exercise.id.split('_')[1]) + 1).toString().padStart(3, "0"))
             document.getElementById(current_exercise.id).classList.add("d-none");
             document.getElementById(current_exercise.id).setAttribute("exercise_active", "flase");
             if (document.querySelectorAll("[exercise_active]").length < Number(current_exercise.id.split('_')[1]) + 1) {
@@ -2187,8 +2167,9 @@
                console.log('Excercise Ended');
                console.log('Call result div');
             } else {
-               document.getElementById(current_exercise.id.split('_')[0] + '_' + (Number(current_exercise.id.split('_')[1]) + 1).toString().padStart(3, "0")).classList.remove("d-none");
-               document.getElementById(current_exercise.id.split('_')[0] + '_' + (Number(current_exercise.id.split('_')[1]) + 1).toString().padStart(3, "0")).setAttribute("exercise_active", "true");
+               var nextExercice = current_exercise.id.split('_')[0] + '_00' + (Number(current_exercise.id[current_exercise.id.length-1]) + 1).toString()
+               document.getElementById(nextExercice).classList.remove("d-none");
+               document.getElementById(nextExercice).setAttribute("exercise_active", "true");
             }
          } else {
             console.log('restart excercise');

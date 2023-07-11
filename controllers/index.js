@@ -2,7 +2,7 @@ require("dotenv").config({ path: "./.env" });
 let conn = require("../config/DbConnect");
 
 const Lesson = (req, res, next) => {
-  mongo = conn.getDb();
+  const mongo = conn.getDb();
   mongo
     .collection("lessons")
     .findOne({ slug: req.params.slug })
@@ -11,7 +11,6 @@ const Lesson = (req, res, next) => {
         .collection("api.lessons.new.sources")
         .findOne({ v3_id : results?.v3Id })
         .then((video) => {
-          console.log(video);
           let data = {
             course: "1234",
             level: "newbie",
