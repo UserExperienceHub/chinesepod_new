@@ -974,7 +974,7 @@
                                                                                              <div
                                                                                                 class="exercise-block <% if(num > 0) { %>d-none<% } %>"
                                                                                                 exercise_active="<% if(num > 0) { %>false<% } else { %>true<% } %>"
-                                                                                                id="exercise_00<%= num+1 %>">
+                                                                                                id="exercise_00<%= num+1 %>" type="choice">
                                                                                                 <% num++ %>
                                                                                                 <div class="col-12">
                                                                                                    <header>
@@ -1040,19 +1040,16 @@
                                                                                                 </div>
                                                                                              </div>
                                                                                           <% } %>
-                                                                                       <% } if (results.questions['matching']) { %>
-                                                                                          <% for (let i=0; i < results.questions['matching'].length; i++) { %>
+                                                                                       <% } if (results.questions['matching']) { %> 
                                                                                              <div
                                                                                                 class="exercise-block d-none"
                                                                                                 exercise_active="flase"
-                                                                                                id="exercise_00<%= num+1 %>">
+                                                                                                id="exercise_00<%= num+1 %>" type="matching">
                                                                                                 <% num++ %>
                                                                                                 <div class="col-12">
                                                                                                    <header>
                                                                                                       <h1 class="title">
-                                                                                                         Match the
-                                                                                                         phrase with the
-                                                                                                         translation
+                                                                                                         Match the phrase with the translation
                                                                                                       </h1>
                                                                                                       <div
                                                                                                          class="scores">
@@ -1070,9 +1067,8 @@
                                                                                                    class="parts">
                                                                                                    <div
                                                                                                       class="parts-left col-6">
-                                                                                                      <% results.questions['matching'][i].question.segments.forEach((elem, index)=> { %>
-                                                                                                         <button
-                                                                                                            type="button"
+                                                                                                      <% results.questions['matching'][0].question.segments.forEach((elem, index)=> { %>
+                                                                                                         <button id="match-chines-<%= index %>" type="button"
                                                                                                             class="btn btn-light btn-block mb-2"
                                                                                                             data-tag="<%= elem.id %>">
                                                                                                             <div
@@ -1091,9 +1087,8 @@
                                                                                                    </div>
                                                                                                    <div
                                                                                                       class="parts-right col-6">
-                                                                                                      <% results.questions['matching'][i].question.segments.forEach((elem, index)=> { %>
-                                                                                                         <button
-                                                                                                            type="button"
+                                                                                                      <% results.questions['matching'][0].question.segments.forEach((elem, index)=> { %>
+                                                                                                         <button id="match-english-<%= index %>" type="button"
                                                                                                             class="btn btn-light btn-block mb-2"
                                                                                                             data-tag="<%= elem.id %>">
                                                                                                             <div
@@ -1107,60 +1102,40 @@
                                                                                                       <% }) %>
                                                                                                    </div>
                                                                                                 </div>
-                                                                                             </div>
-                                                                                          <% } %>
+                                                                                             </div> 
                                                                                        <% } if (results.questions['rearrange']) { %>
                                                                                           <% for (let i=0; i < results.questions['rearrange'].length; i++) { %>
-                                                                                             <div
-                                                                                                class="exercise-block d-none"
-                                                                                                exercise_active="flase"
-                                                                                                id="exercise_00<%= num+1 %>">
+                                                                                             <div class="exercise-block d-none" exercise_active="flase" id="exercise_00<%= num+1 %>" type="rearrange">
                                                                                                 <% num++ %>
                                                                                                 <div class="col-12">
                                                                                                    <header>
-                                                                                                      <h1
-                                                                                                         class="title">
-                                                                                                         Re-order the
-                                                                                                         segments
-                                                                                                      </h1>
-                                                                                                      <div
-                                                                                                         class="scores">
-                                                                                                         <div
-                                                                                                            class="score-block">
-                                                                                                            <span
-                                                                                                               class="score">6</span><span
-                                                                                                               class="points">
-                                                                                                               points</span>
+                                                                                                      <h1 class="title">Re-order the segments</h1>
+                                                                                                      <div class="scores">
+                                                                                                         <div class="score-block">
+                                                                                                            <span class="score">6</span>
+                                                                                                            <span class="points">points</span>
                                                                                                          </div>
                                                                                                       </div>
                                                                                                    </header>
                                                                                                 </div>
-                                                                                                <div
-                                                                                                   class="draggable-sentences">
+                                                                                                <div class="draggable-sentences">
                                                                                                    <% results.questions['rearrange'][i].question.segments.forEach((elem, index)=> { %>
-                                                                                                      <div
-                                                                                                         class="card bg-gradient-lighter">
-                                                                                                         <div
-                                                                                                            class="card-body row">
-                                                                                                            <div
-                                                                                                               class="col-10 col-sm-11">
-                                                                                                               <span
-                                                                                                                  class="characters"><%= elem.traditional %>
-                                                                                                                  <%= elem.pinyin %>
-                                                                                                               </footer>
+                                                                                                      <div class="card bg-gradient-lighter">
+                                                                                                         <div class="card-body row">
+                                                                                                            <div class="col-10 col-sm-11 current-div-<%=index%>">
+                                                                                                               <div class="result-div" sequence="<%= elem.id %>">
+                                                                                                                  <span class="characters"><%= elem.traditional %></span>
+                                                                                                                  <footer class="pinyin"><%= elem.pinyin %></footer>
+                                                                                                               </div>
                                                                                                             </div>
-                                                                                                            <div
-                                                                                                               class="col-2 col-sm-1">
-                                                                                                               <div
-                                                                                                                  class="row">
-                                                                                                                  <div
-                                                                                                                     class="col-12">
-                                                                                                                     <button
-                                                                                                                        type="button"
-                                                                                                                        class="btn btn-icon-only mb-2 btn-secondary btn-lg">
-                                                                                                                        <i
-                                                                                                                           class="text-lg fa fa-chevron-up"></i>
-                                                                                                                     </button>
+                                                                                                            <div class="col-2 col-sm-1">
+                                                                                                               <div class="row">
+                                                                                                                  <div class="col-12">
+                                                                                                                     <% if (index > 0) { %>
+                                                                                                                        <button onclick="swipDiv('<%=index%>')" type="button" class="btn btn-icon-only mb-2 btn-secondary btn-lg">
+                                                                                                                           <i class="text-lg fa fa-chevron-up"></i>
+                                                                                                                        </button>
+                                                                                                                     <% } %>
                                                                                                                   </div>
                                                                                                                </div>
                                                                                                             </div>
@@ -1172,10 +1147,7 @@
                                                                                           <% } %>
                                                                                        <% } if (results.questions['audio']) { %>
                                                                                           <% for (let i=0; i < results.questions['audio'].length; i++) { %>
-                                                                                             <div
-                                                                                                class="exercise-block d-none"
-                                                                                                exercise_active="flase"
-                                                                                                id="exercise_00<%= num+1 %>">
+                                                                                             <div class="exercise-block d-none" exercise_active="flase" id="exercise_00<%= num+1 %>" type="audio">
                                                                                                 <% num++ %>
                                                                                                 <div
                                                                                                    class="col-12">
@@ -1209,11 +1181,10 @@
                                                                                                          <div
                                                                                                             id="button-addon1"
                                                                                                             class="input-group-prepend">
-                                                                                                            <button
-                                                                                                               type="button"
-                                                                                                               class="btn btn-outline-primary"><i
-                                                                                                                  class="fa ni-lg fa fa-play"></i></button>
-                                                                                                            <audio answer="<%= results.questions['audio'][i].answer.traditional%>" src="<%= results.questions['audio'][i].question.audio %>"></audio>
+                                                                                                            <button type="button" onclick="playAudio('exercise_00<%= num+1 %>')" class="btn btn-outline-primary"><i class="fa ni-lg fa fa-play"></i></button>
+                                                                                                            <audio answer="<%=results.questions['audio'][i].answer.traditional%>"> 
+                                                                                                               <source src="<%= results.questions['audio'][i].question.audio %>" type="audio/ogg"> 
+                                                                                                            </audio> 
                                                                                                          </div>
                                                                                                          <input
                                                                                                             type="text"
@@ -1221,8 +1192,8 @@
                                                                                                             autofocus="autofocus"
                                                                                                             aria-label="Listening Practice Input"
                                                                                                             aria-describedby="button-addon1"
-                                                                                                            class="form-control"><small
-                                                                                                            class="font-italic"></small>
+                                                                                                            class="form-control audio-value">
+                                                                                                            <small class="font-italic"></small>
                                                                                                       </div>
                                                                                                       <div
                                                                                                          class="valid-feedback">
@@ -2136,10 +2107,20 @@
 
       //bottom player
       //Multistep excercise
-      function callNextExercise() { 
+      function callNextExercise() {  
          if (document.getElementById("btn_next_exercise").getAttribute("test_pahse") === 'true') {
             const current_exercise = document.querySelector('[exercise_active="true"]');
-            document.getElementById(current_exercise.id).classList.add("d-none");
+            document.getElementById(current_exercise.id).classList.add("d-none"); 
+            if(document.getElementById(current_exercise.id).getAttribute("type") == "rearrange") {
+               SentenceReOrderingExercise();
+            }
+            if(document.getElementById(current_exercise.id).getAttribute("type") == "audio") {
+               CheckAudioModule(current_exercise.id);
+               // pauseAudio();
+            }
+            if(document.getElementById(current_exercise.id).getAttribute("type") == "matching") {
+               checkMatchingExercise();
+            }
             document.getElementById(current_exercise.id).setAttribute("exercise_active", "flase");
             if (document.querySelectorAll("[exercise_active]").length < Number(current_exercise.id.split('_')[1]) + 1) {
                document.getElementById("btn_next_exercise").setAttribute("test_pahse", "false")
@@ -2395,7 +2376,694 @@
             play(j)
          })
       }
-         //vocabulary character animation
+         //vocabulary character animation      
+
+   </script>
+
+   //Handling Games
+   <script>
+      //Swiping the Divs in Re-Ordering Module
+      function swipDiv(id) {   
+         let clickedDiv = document.querySelector(`.current-div-${id}`).innerHTML;
+         let UpperDiv = document.querySelector(`.current-div-${id-1}`).innerHTML;
+ 
+         document.querySelector(`.current-div-${id-1}`).innerHTML = clickedDiv;
+         document.querySelector(`.current-div-${id}`).innerHTML = UpperDiv;
+      }
+
+      //Re-Ordering Exercise Result
+      function SentenceReOrderingExercise() {   
+         let Reordering_Score = 0;
+         let li = document.querySelectorAll(".result-div");  
+         for (let i = 0; i < li.length; i++) { 
+            if(li[i].getAttribute("sequence") == i+1) {
+               Reordering_Score = Reordering_Score + 1;
+            } 
+         }
+         console.log("Reordering_Score", Reordering_Score);
+      }
+
+      //Audio Module Result function
+      function CheckAudioModule(id) {  
+         let Audio_Score = 0;  
+         
+         if (document.getElementById(id).querySelector('audio').getAttribute("answer").replaceAll(/\s/g, "") == document.getElementById(id).querySelector('input').value.replaceAll(/\s/g, "")) {
+            Audio_Score++ 
+         }  
+         console.log("Audio", Audio_Score); 
+        }
+
+      function playAudio(id) { 
+         let x = document.getElementById(id).querySelector('audio'); 
+         x.play(); 
+      }
+
+      // function pauseAudio() { 
+      //    let x = document.getElementById(id).querySelector('audio'); 
+      //    x.pause(); 
+      // } 
+
+
+
+
+        // Match-Translation Questions Resolve
+        let colors = ["bg-primary", "bg-success", "bg-danger", "bg-warning", "bg-info", "bg-dark"];
+      let chines_Btn0 = document.getElementById("match-chines-0");   
+      let chines_Btn1 = document.getElementById("match-chines-1");   
+      let chines_Btn2 = document.getElementById("match-chines-2");   
+      let chines_Btn3 = document.getElementById("match-chines-3");   
+      let chines_Btn4 = document.getElementById("match-chines-4");   
+
+      let english_Btn0 = document.getElementById("match-english-0");  
+      let english_Btn1 = document.getElementById("match-english-1");  
+      let english_Btn2 = document.getElementById("match-english-2");  
+      let english_Btn3 = document.getElementById("match-english-3");  
+      let english_Btn4 = document.getElementById("match-english-4");  
+      let currectColor = {};
+      let selectedChinesBtn = [];
+      let selectedEnglishBtn = [];
+      let randNum = -1;
+
+      //Chines Wale
+      chines_Btn0.addEventListener('click', (event)=> {  
+         if(Object.keys(currectColor).length > 0) { 
+            chines_Btn0.classList.replace('btn-light', Object.values(currectColor)[0]); 
+            selectedChinesBtn.push("chines_Btn0");
+      
+            chines_Btn0.classList.remove("disabled")
+            chines_Btn1.classList.remove("disabled")
+            chines_Btn2.classList.remove("disabled")
+            chines_Btn3.classList.remove("disabled")
+            chines_Btn4.classList.remove("disabled") 
+
+            english_Btn0.classList.remove("disabled") 
+            english_Btn1.classList.remove("disabled") 
+            english_Btn2.classList.remove("disabled") 
+            english_Btn3.classList.remove("disabled") 
+            english_Btn4.classList.remove("disabled") 
+
+            selectedEnglishBtn.forEach(element => {
+               if (element == "english_Btn0") {
+                  english_Btn0.classList.add("disabled")
+               } else if(element == "english_Btn1") {
+                  english_Btn1.classList.add("disabled")
+               } else if(element == "english_Btn2") {
+                  english_Btn2.classList.add("disabled")
+               } else if(element == "english_Btn3") {
+                  english_Btn3.classList.add("disabled")
+               } else if(element == "english_Btn4") {
+                  english_Btn4.classList.add("disabled")
+               }
+            });
+
+            selectedChinesBtn.forEach(element => {
+               if (element == "chines_Btn0") {
+                  chines_Btn0.classList.add("disabled")
+               } else if(element == "chines_Btn1") {
+                  chines_Btn1.classList.add("disabled")
+               } else if(element == "chines_Btn2") {
+                  chines_Btn2.classList.add("disabled")
+               } else if(element == "chines_Btn3") {
+                  chines_Btn3.classList.add("disabled")
+               } else if(element == "chines_Btn4") {
+                  chines_Btn4.classList.add("disabled")
+               } 
+            });
+
+            currectColor = {};
+
+         } else {
+            let a = colors[++randNum];
+            chines_Btn0.classList.replace('btn-light', a);
+            currectColor.chines_Btn0 = a;
+            selectedChinesBtn.push("chines_Btn0");
+
+            chines_Btn0.classList.add("disabled")
+            chines_Btn1.classList.add("disabled")
+            chines_Btn2.classList.add("disabled")
+            chines_Btn3.classList.add("disabled")
+            chines_Btn4.classList.add("disabled")
+         }
+      }); 
+      chines_Btn1.addEventListener('click', (event)=> { 
+         if(Object.keys(currectColor).length > 0) { 
+            chines_Btn1.classList.replace('btn-light', Object.values(currectColor)[0]); 
+            selectedChinesBtn.push("chines_Btn1");
+      
+            chines_Btn0.classList.remove("disabled")
+            chines_Btn1.classList.remove("disabled")
+            chines_Btn2.classList.remove("disabled")
+            chines_Btn3.classList.remove("disabled")
+            chines_Btn4.classList.remove("disabled") 
+
+            english_Btn0.classList.remove("disabled") 
+            english_Btn1.classList.remove("disabled") 
+            english_Btn2.classList.remove("disabled") 
+            english_Btn3.classList.remove("disabled") 
+            english_Btn4.classList.remove("disabled") 
+
+            selectedEnglishBtn.forEach(element => {
+               if (element == "english_Btn0") {
+                  english_Btn0.classList.add("disabled")
+               } else if(element == "english_Btn1") {
+                  english_Btn1.classList.add("disabled")
+               } else if(element == "english_Btn2") {
+                  english_Btn2.classList.add("disabled")
+               } else if(element == "english_Btn3") {
+                  english_Btn3.classList.add("disabled")
+               } else if(element == "english_Btn4") {
+                  english_Btn4.classList.add("disabled")
+               }
+            });
+
+            selectedChinesBtn.forEach(element => {
+               if (element == "chines_Btn0") {
+                  chines_Btn0.classList.add("disabled")
+               } else if(element == "chines_Btn1") {
+                  chines_Btn1.classList.add("disabled")
+               } else if(element == "chines_Btn2") {
+                  chines_Btn2.classList.add("disabled")
+               } else if(element == "chines_Btn3") {
+                  chines_Btn3.classList.add("disabled")
+               } else if(element == "chines_Btn4") {
+                  chines_Btn4.classList.add("disabled")
+               } 
+            });
+
+            currectColor = {};
+
+         } else {
+            let a = colors[++randNum];
+            chines_Btn1.classList.replace('btn-light', a);
+            currectColor.chines_Btn1 = a;
+            selectedChinesBtn.push("chines_Btn1");
+
+            chines_Btn0.classList.add("disabled")
+            chines_Btn1.classList.add("disabled")
+            chines_Btn2.classList.add("disabled")
+            chines_Btn3.classList.add("disabled")
+            chines_Btn4.classList.add("disabled")
+         }
+      }); 
+      chines_Btn2.addEventListener('click', (event)=> { 
+         if(Object.keys(currectColor).length > 0) { 
+            chines_Btn2.classList.replace('btn-light', Object.values(currectColor)[0]); 
+            selectedChinesBtn.push("chines_Btn2");
+      
+            chines_Btn0.classList.remove("disabled")
+            chines_Btn1.classList.remove("disabled")
+            chines_Btn2.classList.remove("disabled")
+            chines_Btn3.classList.remove("disabled")
+            chines_Btn4.classList.remove("disabled") 
+
+            english_Btn0.classList.remove("disabled") 
+            english_Btn1.classList.remove("disabled") 
+            english_Btn2.classList.remove("disabled") 
+            english_Btn3.classList.remove("disabled") 
+            english_Btn4.classList.remove("disabled") 
+
+            selectedEnglishBtn.forEach(element => {
+               if (element == "english_Btn0") {
+                  english_Btn0.classList.add("disabled")
+               } else if(element == "english_Btn1") {
+                  english_Btn1.classList.add("disabled")
+               } else if(element == "english_Btn2") {
+                  english_Btn2.classList.add("disabled")
+               } else if(element == "english_Btn3") {
+                  english_Btn3.classList.add("disabled")
+               } else if(element == "english_Btn4") {
+                  english_Btn4.classList.add("disabled")
+               }
+            });
+
+            selectedChinesBtn.forEach(element => {
+               if (element == "chines_Btn0") {
+                  chines_Btn0.classList.add("disabled")
+               } else if(element == "chines_Btn1") {
+                  chines_Btn1.classList.add("disabled")
+               } else if(element == "chines_Btn2") {
+                  chines_Btn2.classList.add("disabled")
+               } else if(element == "chines_Btn3") {
+                  chines_Btn3.classList.add("disabled")
+               } else if(element == "chines_Btn4") {
+                  chines_Btn4.classList.add("disabled")
+               } 
+            });
+
+            currectColor = {};
+
+         } else {
+            let a = colors[++randNum];
+            chines_Btn2.classList.replace('btn-light', a);
+            currectColor.chines_Btn2 = a;
+            selectedChinesBtn.push("chines_Btn2");
+
+            chines_Btn0.classList.add("disabled")
+            chines_Btn1.classList.add("disabled")
+            chines_Btn2.classList.add("disabled")
+            chines_Btn3.classList.add("disabled")
+            chines_Btn4.classList.add("disabled")
+         }
+      }); 
+      chines_Btn3.addEventListener('click', (event)=> { 
+         if(Object.keys(currectColor).length > 0) { 
+            chines_Btn3.classList.replace('btn-light', Object.values(currectColor)[0]); 
+            selectedChinesBtn.push("chines_Btn3");
+      
+            chines_Btn0.classList.remove("disabled")
+            chines_Btn1.classList.remove("disabled")
+            chines_Btn2.classList.remove("disabled")
+            chines_Btn3.classList.remove("disabled")
+            chines_Btn4.classList.remove("disabled") 
+
+            english_Btn0.classList.remove("disabled") 
+            english_Btn1.classList.remove("disabled") 
+            english_Btn2.classList.remove("disabled") 
+            english_Btn3.classList.remove("disabled") 
+            english_Btn4.classList.remove("disabled") 
+
+            selectedEnglishBtn.forEach(element => {
+               if (element == "english_Btn0") {
+                  english_Btn0.classList.add("disabled")
+               } else if(element == "english_Btn1") {
+                  english_Btn1.classList.add("disabled")
+               } else if(element == "english_Btn2") {
+                  english_Btn2.classList.add("disabled")
+               } else if(element == "english_Btn3") {
+                  english_Btn3.classList.add("disabled")
+               } else if(element == "english_Btn4") {
+                  english_Btn4.classList.add("disabled")
+               }
+            });
+
+            selectedChinesBtn.forEach(element => {
+               if (element == "chines_Btn0") {
+                  chines_Btn0.classList.add("disabled")
+               } else if(element == "chines_Btn1") {
+                  chines_Btn1.classList.add("disabled")
+               } else if(element == "chines_Btn2") {
+                  chines_Btn2.classList.add("disabled")
+               } else if(element == "chines_Btn3") {
+                  chines_Btn3.classList.add("disabled")
+               } else if(element == "chines_Btn4") {
+                  chines_Btn4.classList.add("disabled")
+               } 
+            });
+
+            currectColor = {};
+
+         } else {
+            let a = colors[++randNum];
+            chines_Btn3.classList.replace('btn-light', a);
+            currectColor.chines_Btn3 = a;
+            selectedChinesBtn.push("chines_Btn3");
+
+            chines_Btn0.classList.add("disabled")
+            chines_Btn1.classList.add("disabled")
+            chines_Btn2.classList.add("disabled")
+            chines_Btn3.classList.add("disabled")
+            chines_Btn4.classList.add("disabled")
+         }
+      }); 
+      chines_Btn4.addEventListener('click', (event)=> { 
+         if(Object.keys(currectColor).length > 0) { 
+            chines_Btn4.classList.replace('btn-light', Object.values(currectColor)[0]); 
+            selectedChinesBtn.push("chines_Btn4");
+      
+            chines_Btn0.classList.remove("disabled")
+            chines_Btn1.classList.remove("disabled")
+            chines_Btn2.classList.remove("disabled")
+            chines_Btn3.classList.remove("disabled") 
+            chines_Btn4.classList.remove("disabled") 
+
+            english_Btn0.classList.remove("disabled") 
+            english_Btn1.classList.remove("disabled") 
+            english_Btn2.classList.remove("disabled") 
+            english_Btn3.classList.remove("disabled") 
+            english_Btn4.classList.remove("disabled") 
+
+            selectedEnglishBtn.forEach(element => {
+               if (element == "english_Btn0") {
+                  english_Btn0.classList.add("disabled")
+               } else if(element == "english_Btn1") {
+                  english_Btn1.classList.add("disabled")
+               } else if(element == "english_Btn2") {
+                  english_Btn2.classList.add("disabled")
+               } else if(element == "english_Btn3") {
+                  english_Btn3.classList.add("disabled")
+               } else if(element == "english_Btn4") {
+                  english_Btn4.classList.add("disabled")
+               }
+            });
+
+            selectedChinesBtn.forEach(element => {
+               if (element == "chines_Btn0") {
+                  chines_Btn0.classList.add("disabled")
+               } else if(element == "chines_Btn1") {
+                  chines_Btn1.classList.add("disabled")
+               } else if(element == "chines_Btn2") {
+                  chines_Btn2.classList.add("disabled")
+               } else if(element == "chines_Btn3") {
+                  chines_Btn3.classList.add("disabled")
+               } else if(element == "chines_Btn4") {
+                  chines_Btn4.classList.add("disabled")
+               } 
+            });
+
+            currectColor = {};
+
+         } else {
+            let a = colors[++randNum];
+            chines_Btn4.classList.replace('btn-light', a);
+            currectColor.chines_Btn4 = a;
+            selectedChinesBtn.push("chines_Btn4");
+
+            chines_Btn0.classList.add("disabled")
+            chines_Btn1.classList.add("disabled")
+            chines_Btn2.classList.add("disabled")
+            chines_Btn3.classList.add("disabled")
+            chines_Btn4.classList.add("disabled")
+         }
+      }); 
+
+      //English wale
+      english_Btn0.addEventListener('click', (event)=> {
+         if(Object.keys(currectColor).length > 0) {  
+            english_Btn0.classList.replace('btn-light', Object.values(currectColor)[0]); 
+            selectedEnglishBtn.push("english_Btn0");
+      
+            english_Btn0.classList.remove("disabled")
+            english_Btn1.classList.remove("disabled")
+            english_Btn2.classList.remove("disabled")
+            english_Btn3.classList.remove("disabled")
+            english_Btn4.classList.remove("disabled") 
+
+            chines_Btn0.classList.remove("disabled") 
+            chines_Btn1.classList.remove("disabled") 
+            chines_Btn2.classList.remove("disabled") 
+            chines_Btn3.classList.remove("disabled") 
+            chines_Btn4.classList.remove("disabled") 
+
+            selectedChinesBtn.forEach(element => {
+               if (element == "chines_Btn0") {
+                  chines_Btn0.classList.add("disabled")
+               } else if(element == "chines_Btn1") {
+                  chines_Btn1.classList.add("disabled")
+               } else if(element == "chines_Btn2") {
+                  chines_Btn2.classList.add("disabled")
+               } else if(element == "chines_Btn3") {
+                  chines_Btn3.classList.add("disabled")
+               } else if(element == "chines_Btn4") {
+                  chines_Btn4.classList.add("disabled")
+               } 
+            });
+
+            selectedEnglishBtn.forEach(element => {
+               if (element == "english_Btn0") {
+                  english_Btn0.classList.add("disabled")
+               } else if(element == "english_Btn1") {
+                  english_Btn1.classList.add("disabled")
+               } else if(element == "english_Btn2") {
+                  english_Btn2.classList.add("disabled")
+               } else if(element == "english_Btn3") {
+                  english_Btn3.classList.add("disabled")
+               } else if(element == "english_Btn4") {
+                  english_Btn4.classList.add("disabled")
+               }
+            });
+
+            currectColor = {};
+
+         } else {
+            let a = colors[++randNum];
+            english_Btn0.classList.replace('btn-light', a);
+            currectColor.english_Btn0 = a; 
+            selectedEnglishBtn.push("english_Btn0");
+
+            english_Btn0.classList.add("disabled")
+            english_Btn1.classList.add("disabled")
+            english_Btn2.classList.add("disabled")
+            english_Btn3.classList.add("disabled")
+            english_Btn4.classList.add("disabled")
+         }
+      }); 
+      english_Btn1.addEventListener('click', (event)=> {
+         if(Object.keys(currectColor).length > 0) {  
+            english_Btn1.classList.replace('btn-light', Object.values(currectColor)[0]); 
+            selectedEnglishBtn.push("english_Btn1");
+      
+            english_Btn0.classList.remove("disabled")
+            english_Btn1.classList.remove("disabled")
+            english_Btn2.classList.remove("disabled")
+            english_Btn3.classList.remove("disabled")
+            english_Btn4.classList.remove("disabled") 
+
+            chines_Btn0.classList.remove("disabled") 
+            chines_Btn1.classList.remove("disabled") 
+            chines_Btn2.classList.remove("disabled") 
+            chines_Btn3.classList.remove("disabled") 
+            chines_Btn4.classList.remove("disabled") 
+
+            selectedChinesBtn.forEach(element => {
+               if (element == "chines_Btn0") {
+                  chines_Btn0.classList.add("disabled")
+               } else if(element == "chines_Btn1") {
+                  chines_Btn1.classList.add("disabled")
+               } else if(element == "chines_Btn2") {
+                  chines_Btn2.classList.add("disabled")
+               } else if(element == "chines_Btn3") {
+                  chines_Btn3.classList.add("disabled")
+               } else if(element == "chines_Btn4") {
+                  chines_Btn4.classList.add("disabled")
+               } 
+            });
+
+            selectedEnglishBtn.forEach(element => {
+               if (element == "english_Btn0") {
+                  english_Btn0.classList.add("disabled")
+               } else if(element == "english_Btn1") {
+                  english_Btn1.classList.add("disabled")
+               } else if(element == "english_Btn2") {
+                  english_Btn2.classList.add("disabled")
+               } else if(element == "english_Btn3") {
+                  english_Btn3.classList.add("disabled")
+               } else if(element == "english_Btn4") {
+                  english_Btn4.classList.add("disabled")
+               }
+            });
+
+            currectColor = {};
+
+         } else {
+            let a = colors[++randNum];
+            english_Btn1.classList.replace('btn-light', a);
+            currectColor.english_Btn1 = a; 
+            selectedEnglishBtn.push("english_Btn1");
+
+            english_Btn0.classList.add("disabled")
+            english_Btn1.classList.add("disabled")
+            english_Btn2.classList.add("disabled")
+            english_Btn3.classList.add("disabled")
+            english_Btn4.classList.add("disabled")
+         }
+      }); 
+      english_Btn2.addEventListener('click', (event)=> {
+         if(Object.keys(currectColor).length > 0) {  
+            english_Btn2.classList.replace('btn-light', Object.values(currectColor)[0]); 
+            selectedEnglishBtn.push("english_Btn2");
+      
+            english_Btn0.classList.remove("disabled")
+            english_Btn1.classList.remove("disabled")
+            english_Btn2.classList.remove("disabled")
+            english_Btn3.classList.remove("disabled")
+            english_Btn4.classList.remove("disabled") 
+
+            chines_Btn0.classList.remove("disabled") 
+            chines_Btn1.classList.remove("disabled") 
+            chines_Btn2.classList.remove("disabled") 
+            chines_Btn3.classList.remove("disabled") 
+            chines_Btn4.classList.remove("disabled") 
+
+            selectedChinesBtn.forEach(element => {
+               if (element == "chines_Btn0") {
+                  chines_Btn0.classList.add("disabled")
+               } else if(element == "chines_Btn1") {
+                  chines_Btn1.classList.add("disabled")
+               } else if(element == "chines_Btn2") {
+                  chines_Btn2.classList.add("disabled")
+               } else if(element == "chines_Btn3") {
+                  chines_Btn3.classList.add("disabled")
+               } else if(element == "chines_Btn4") {
+                  chines_Btn4.classList.add("disabled")
+               } 
+            });
+
+            selectedEnglishBtn.forEach(element => {
+               if (element == "english_Btn0") {
+                  english_Btn0.classList.add("disabled")
+               } else if(element == "english_Btn1") {
+                  english_Btn1.classList.add("disabled")
+               } else if(element == "english_Btn2") {
+                  english_Btn2.classList.add("disabled")
+               } else if(element == "english_Btn3") {
+                  english_Btn3.classList.add("disabled")
+               } else if(element == "english_Btn4") {
+                  english_Btn4.classList.add("disabled")
+               }
+            }); 
+
+            currectColor = {};
+
+         } else {
+            let a = colors[++randNum];
+            english_Btn2.classList.replace('btn-light', a);
+            currectColor.english_Btn2 = a; 
+            selectedEnglishBtn.push("english_Btn2");
+
+            english_Btn0.classList.add("disabled")
+            english_Btn1.classList.add("disabled")
+            english_Btn2.classList.add("disabled")
+            english_Btn3.classList.add("disabled")
+            english_Btn4.classList.add("disabled")
+         }
+      }); 
+      english_Btn3.addEventListener('click', (event)=> {
+         if(Object.keys(currectColor).length > 0) {  
+            english_Btn3.classList.replace('btn-light', Object.values(currectColor)[0]); 
+            selectedEnglishBtn.push("english_Btn3");
+      
+            english_Btn0.classList.remove("disabled")
+            english_Btn1.classList.remove("disabled")
+            english_Btn2.classList.remove("disabled")
+            english_Btn3.classList.remove("disabled")
+            english_Btn4.classList.remove("disabled") 
+
+            chines_Btn0.classList.remove("disabled") 
+            chines_Btn1.classList.remove("disabled") 
+            chines_Btn2.classList.remove("disabled") 
+            chines_Btn3.classList.remove("disabled") 
+            chines_Btn4.classList.remove("disabled") 
+
+            selectedChinesBtn.forEach(element => {
+               if (element == "chines_Btn0") {
+                  chines_Btn0.classList.add("disabled")
+               } else if(element == "chines_Btn1") {
+                  chines_Btn1.classList.add("disabled")
+               } else if(element == "chines_Btn2") {
+                  chines_Btn2.classList.add("disabled")
+               } else if(element == "chines_Btn3") {
+                  chines_Btn3.classList.add("disabled")
+               } else if(element == "chines_Btn4") {
+                  chines_Btn4.classList.add("disabled")
+               } 
+            });
+
+            selectedEnglishBtn.forEach(element => {
+               if (element == "english_Btn0") {
+                  english_Btn0.classList.add("disabled")
+               } else if(element == "english_Btn1") {
+                  english_Btn1.classList.add("disabled")
+               } else if(element == "english_Btn2") {
+                  english_Btn2.classList.add("disabled")
+               } else if(element == "english_Btn3") {
+                  english_Btn3.classList.add("disabled")
+               } else if(element == "english_Btn4") {
+                  english_Btn4.classList.add("disabled")
+               }
+            }); 
+
+            currectColor = {};
+
+         } else {
+            let a = colors[++randNum];
+            english_Btn3.classList.replace('btn-light', a);
+            currectColor.english_Btn3 = a; 
+            selectedEnglishBtn.push("english_Btn3");
+           
+            english_Btn0.classList.add("disabled")
+            english_Btn1.classList.add("disabled")
+            english_Btn2.classList.add("disabled")
+            english_Btn3.classList.add("disabled")
+            english_Btn4.classList.add("disabled")
+         }
+      }); 
+      english_Btn4.addEventListener('click', (event)=> {
+         if(Object.keys(currectColor).length > 0) {  
+            english_Btn4.classList.replace('btn-light', Object.values(currectColor)[0]); 
+            selectedEnglishBtn.push("english_Btn4");
+      
+            english_Btn0.classList.remove("disabled")
+            english_Btn1.classList.remove("disabled")
+            english_Btn2.classList.remove("disabled")
+            english_Btn3.classList.remove("disabled") 
+            english_Btn4.classList.remove("disabled") 
+
+            chines_Btn0.classList.remove("disabled") 
+            chines_Btn1.classList.remove("disabled") 
+            chines_Btn2.classList.remove("disabled") 
+            chines_Btn3.classList.remove("disabled") 
+            chines_Btn4.classList.remove("disabled") 
+
+            selectedChinesBtn.forEach(element => {
+               if (element == "chines_Btn0") {
+                  chines_Btn0.classList.add("disabled")
+               } else if(element == "chines_Btn1") {
+                  chines_Btn1.classList.add("disabled")
+               } else if(element == "chines_Btn2") {
+                  chines_Btn2.classList.add("disabled")
+               } else if(element == "chines_Btn3") {
+                  chines_Btn3.classList.add("disabled")
+               } else if(element == "chines_Btn4") {
+                  chines_Btn4.classList.add("disabled")
+               } 
+            });
+
+            selectedEnglishBtn.forEach(element => {
+               if (element == "english_Btn0") {
+                  english_Btn0.classList.add("disabled")
+               } else if(element == "english_Btn1") {
+                  english_Btn1.classList.add("disabled")
+               } else if(element == "english_Btn2") {
+                  english_Btn2.classList.add("disabled")
+               } else if(element == "english_Btn3") {
+                  english_Btn3.classList.add("disabled")
+               } else if(element == "english_Btn4") {
+                  english_Btn4.classList.add("disabled")
+               }
+            }); 
+
+            currectColor = {};
+
+         } else {
+            let a = colors[++randNum];
+            english_Btn4.classList.replace('btn-light', a);
+            currectColor.english_Btn4 = a; 
+            selectedEnglishBtn.push("english_Btn4");
+           
+            english_Btn0.classList.add("disabled")
+            english_Btn1.classList.add("disabled")
+            english_Btn2.classList.add("disabled")
+            english_Btn3.classList.add("disabled")
+            english_Btn4.classList.add("disabled")
+         }
+      }); 
+
+
+      function checkMatchingExercise() { 
+         let score = 0;
+         for (let i = 0; i < 5; i++) {  
+            for (let j = 0; j < 5; j++) {  
+               if(!document.getElementById(`match-chines-${i}`).classList.contains("btn-light")) {
+                  if(document.getElementById(`match-chines-${i}`).classList[1] == document.getElementById(`match-english-${j}`).classList[1]) {
+                     if(document.getElementById(`match-chines-${i}`).getAttribute("data-tag") == document.getElementById(`match-english-${j}`).getAttribute("data-tag")) {
+                        score++;
+                     } 
+                  } 
+               }
+            } 
+         }
+         console.log(`Matching ${score}`);
+      }   
 
    </script>
 </body>
