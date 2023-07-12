@@ -180,7 +180,7 @@
                                  </div>
                                  <input placeholder="Search Lessons" type="text" class="form-control">
                                  <div class="d-none d-xl-flex input-group-append text-center" id="sprControls">
-                                    <div class="bg-<%= data.level %> text-center p-0">
+                                    <div class="bg-<%= results.level %> text-center p-0">
                                        <div class="custom-control custom-checkbox my-2">
                                           <input id="5206d211b2b29" type="checkbox" class="custom-control-input">
                                           <label for="5206d211b2b29" class="custom-control-label">
@@ -314,7 +314,7 @@
                <div class="row align-items-center py-4">
                   <div class="col-9 col-sm-9 col-lg-8">
                      <a href="/home" class="d-inline-block d-md-none mr-2"><i class="fas fa-home"></i></a>
-                     <a href="/courses/<%= data.course %>" class="d-inline-block d-md-none mx-2">Course Overview</a>
+                     <a href="/courses/<%= results.id %>" class="d-inline-block d-md-none mx-2">Course Overview</a>
                      <h1 class="h2 d-inline-block mb-0 mr-md-4">
                         <%= results?.title %>
                      </h1>
@@ -326,7 +326,7 @@
                               </a>
                            </li>
                            <li class="breadcrumb-item">
-                              <a href="/courses/<%= data.course %>" class="">Course Overview</a>
+                              <a href="/courses/<%= results.id %>" class="">Course Overview</a>
                            </li>
                            <li aria-current="page" class="breadcrumb-item active">
                               <%= results?.title %>
@@ -485,20 +485,20 @@
                                     </div>
                                     <div class="col-8">
                                        <div class="ml-auto">
-                                          <a href="/explore?search=&amp;<%= data.level %>=true" class="">
-                                             <span class="badge float-right badge-default badge-lg <%= data.level %>">
-                                                <%= data.level %>
+                                          <a href="/explore?search=&amp;<%= results.level %>=true" class="">
+                                             <span class="badge float-right badge-default badge-lg <%= results.level %>">
+                                                <%= results.level %>
                                              </span>
                                           </a>
-                                          <span class="badge float-right me-2 badge-default badge-lg <%= data.level %>">ID:
-                                             <%= data.id %>
+                                          <span class="badge float-right me-2 badge-default badge-lg <%= results.level %>">ID:
+                                             <%= results.v3Id %>
                                           </span>
                                        </div>
                                     </div>
                                  </div>
                                  <div class="card-body mb-0">
                                     <span class="text-wrap">
-                                       <%= data.lessonDetails %>
+                                       <%= results.transcription %>
                                     </span>
                                  </div>
                               </div>
@@ -1046,8 +1046,8 @@
                                                                                                 class="exercise-block d-none"
                                                                                                 exercise_active="flase"
                                                                                                 id="exercise_00<%= num+1 %>">
-                                                                                                <div class="col-12">
                                                                                                 <% num++ %>
+                                                                                                <div class="col-12">
                                                                                                    <header>
                                                                                                       <h1 class="title">
                                                                                                          Match the
@@ -1170,7 +1170,7 @@
                                                                                                 </div>
                                                                                              </div>
                                                                                           <% } %>
-                                                                                       <% } else if (results.questions['audio']) { %>
+                                                                                       <% } if (results.questions['audio']) { %>
                                                                                           <% for (let i=0; i < results.questions['audio'].length; i++) { %>
                                                                                              <div
                                                                                                 class="exercise-block d-none"
