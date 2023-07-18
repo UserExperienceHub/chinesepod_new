@@ -1583,7 +1583,7 @@
          this.browserCookies = getCookie('cpod.sid');
 
          // just a test to render token
-         if (!this.browserCookies) this.browserCookies = "s%3Af6mkk2PLIqT2Iq3JHA4ucUAWQMbGqqzf.EDkEqFnGpH9dLSI%2FiO%2FjDgabFcPG6xxtkNEeaNzz%2Feg";
+         // if (!this.browserCookies) this.browserCookies = "s%3Af6mkk2PLIqT2Iq3JHA4ucUAWQMbGqqzf.EDkEqFnGpH9dLSI%2FiO%2FjDgabFcPG6xxtkNEeaNzz%2Feg";
 
          this.browserCookies = 'cpod.sid=' + this.browserCookies;
 
@@ -1597,12 +1597,12 @@
             this.token = entranceApiData.token
             this.currentUserId = entranceApiData.userId
             console.log("found token, fetching users data");
-            // TEST TO GET USERS DATA 
+            // TEST TO GET USERS DATA
             let userData = await fetchApi(apiUrlUserData, this.token);
             console.log(userData);
          } else {
             console.log('not looged in');
-            //redirect to login page 
+            location = 'https://www.chinesepod.com/login'
          }
 
       });

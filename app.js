@@ -26,6 +26,6 @@ conn.connectToServer(function(err, client) {
 
 app.use('/', indexRoutes);
 
-app.listen(8080, function(){
-  console.log('Server listening on port 8080')
+app.listen(80, function(){
+  console.log('Server listening on port 80')
 });
