@@ -266,7 +266,7 @@
                                        class="bg-white">
                                  </span>
                                  <div class="media-body ml-2">
-                                    <span class="mb-0 text-sm font-weight-bold">nadir16</span>
+                                    <span class="mb-0 text-sm font-weight-bold" id="username">Admin</span>
                                  </div>
                               </div>
                            </a>
@@ -1555,7 +1555,7 @@
          // fetch API function
          let fetchApi = async (url, token) => {
             //console.log("inside function",this.browserCookies);
-            let results = await fetch(apiUrl, {
+            let results = await fetch(url, {
                credentials: 'same-origin',
                headers: {
                   'Accept': 'application/json, text/plain, */*',
@@ -1583,7 +1583,7 @@
          this.browserCookies = getCookie('cpod.sid');
 
          // just a test to render token
-         // if (!this.browserCookies) this.browserCookies = "s%3Af6mkk2PLIqT2Iq3JHA4ucUAWQMbGqqzf.EDkEqFnGpH9dLSI%2FiO%2FjDgabFcPG6xxtkNEeaNzz%2Feg";
+         if (!this.browserCookies) this.browserCookies = "s%3Af6mkk2PLIqT2Iq3JHA4ucUAWQMbGqqzf.EDkEqFnGpH9dLSI%2FiO%2FjDgabFcPG6xxtkNEeaNzz%2Feg";
 
          this.browserCookies = 'cpod.sid=' + this.browserCookies;
 
@@ -1599,7 +1599,8 @@
             console.log("found token, fetching users data");
             // TEST TO GET USERS DATA
             let userData = await fetchApi(apiUrlUserData, this.token);
-            console.log(userData);
+            console.log(userData.username, "userData");
+            document.getElementById("username").innerHTML = userData.username
          } else {
             console.log('not looged in');
             location = 'https://www.chinesepod.com/login'

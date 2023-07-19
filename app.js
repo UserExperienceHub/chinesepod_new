@@ -5,6 +5,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require("cors");
+const PORT = process.env.PORT || 80;
 
 const indexRoutes = require('./routes');
 
@@ -26,6 +27,6 @@ conn.connectToServer(function(err, client) {
 
 app.use('/', indexRoutes);
 
-app.listen(80, function(){
-  console.log('Server listening on port 80')
+app.listen(PORT, function(){
+  console.log(`Server listening on port ${PORT}`)
 });
